@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { IMG } from "@/lib/images";
+import {
+  OfficeIllustration,
+  FactoryIllustration,
+  InstitutionIllustration,
+} from "@/components/Illustrations";
 
 const SERVICES = [
   {
@@ -13,7 +17,7 @@ const SERVICES = [
       "주말·공휴일·야간 작업 가능",
       "사후 정리·배치 작업 지원",
     ],
-    image: IMG.office,
+    Illus: OfficeIllustration,
   },
   {
     eng: "FACTORY & WAREHOUSE",
@@ -26,7 +30,7 @@ const SERVICES = [
       "단계별 분할 이전 가능",
       "재고·자재 분류 보관 지원",
     ],
-    image: IMG.warehouse,
+    Illus: FactoryIllustration,
   },
   {
     eng: "INSTITUTIONAL",
@@ -39,15 +43,15 @@ const SERVICES = [
       "기관별 맞춤 동선 설계",
       "사후 정리·배치 지원",
     ],
-    image: IMG.hospital,
+    Illus: InstitutionIllustration,
   },
 ];
 
 const CAPABILITIES = [
-  { label: "Packing", title: "포장재 자체 운용", desc: "박스·완충재·전용 케이스를 자체 보유하여 즉시 작업이 가능합니다." },
-  { label: "Vehicle", title: "전용 차량", desc: "1톤·2.5톤·5톤 등 작업 규모에 맞춘 차량을 직접 운용합니다." },
-  { label: "Manpower", title: "전문 인력", desc: "기업이사 경험을 갖춘 한 팀이 처음부터 끝까지 작업합니다." },
-  { label: "Equipment", title: "협업 장비", desc: "사다리차·지게차 등 작업 환경에 맞춰 추가 장비를 운용합니다." },
+  { label: "Packing", title: "포장재 자체 운용", desc: "박스·완충재·전용 케이스를 자체 보유하여 즉시 작업이 가능합니다.", icon: BoxIcon },
+  { label: "Vehicle", title: "전용 차량", desc: "1톤·2.5톤·5톤 등 작업 규모에 맞춘 차량을 직접 운용합니다.", icon: TruckIcon },
+  { label: "Manpower", title: "전문 인력", desc: "기업이사 경험을 갖춘 한 팀이 처음부터 끝까지 작업합니다.", icon: TeamIcon },
+  { label: "Equipment", title: "협업 장비", desc: "사다리차·지게차 등 작업 환경에 맞춰 추가 장비를 운용합니다.", icon: ToolsIcon },
 ];
 
 export default function Services() {
@@ -76,8 +80,8 @@ export default function Services() {
                 }`}
               >
                 <div className="lg:col-span-6">
-                  <div className="relative aspect-[5/4] rounded-3xl overflow-hidden">
-                    <img src={s.image} alt={s.title} className="image-cover" />
+                  <div className="relative aspect-[5/4] rounded-3xl overflow-hidden bg-gradient-to-br from-navy-50 to-white border border-navy-100/70">
+                    <s.Illus className="absolute inset-0 w-full h-full" />
                   </div>
                 </div>
                 <div className="lg:col-span-6">
@@ -129,15 +133,19 @@ export default function Services() {
             </h2>
           </div>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {CAPABILITIES.map((c) => (
+            {CAPABILITIES.map((c, i) => (
               <div
                 key={c.label}
-                className="bg-white rounded-2xl p-6 shadow-card hover:shadow-cardHover transition"
+                className="bg-white rounded-2xl p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition animate-fade-up"
+                style={{ animationDelay: `${i * 0.06}s` }}
               >
-                <div className="text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
+                <div className="w-12 h-12 rounded-xl bg-brand-orange/15 text-brand-orangeDark flex items-center justify-center">
+                  <c.icon />
+                </div>
+                <div className="mt-4 text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
                   {c.label}
                 </div>
-                <h3 className="mt-4 text-[17px] font-bold text-brand-navy">
+                <h3 className="mt-1 text-[17px] font-bold text-brand-navy">
                   {c.title}
                 </h3>
                 <p className="mt-2 text-[13.5px] leading-[1.8] text-navy-600 text-pretty">
@@ -145,29 +153,6 @@ export default function Services() {
                 </p>
               </div>
             ))}
-          </div>
-
-          <div className="mt-10 grid lg:grid-cols-2 gap-4">
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden">
-              <img src={IMG.truck} alt="" className="image-cover" />
-              <div className="absolute inset-0 photo-veil-soft" />
-              <div className="absolute bottom-5 left-5 right-5 text-white">
-                <div className="text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
-                  Logistics
-                </div>
-                <div className="mt-2 text-xl font-bold">자체 차량 운용</div>
-              </div>
-            </div>
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden">
-              <img src={IMG.industry} alt="" className="image-cover" />
-              <div className="absolute inset-0 photo-veil-soft" />
-              <div className="absolute bottom-5 left-5 right-5 text-white">
-                <div className="text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
-                  Field Work
-                </div>
-                <div className="mt-2 text-xl font-bold">현장 책임 작업</div>
-              </div>
-            </div>
           </div>
 
           <div className="mt-10 rounded-2xl border border-amber-200 bg-brand-orangeSoft px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
@@ -204,6 +189,39 @@ function InfoIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
       <path d="M12 8v.01M12 11v5M12 22a10 10 0 100-20 10 10 0 000 20z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function BoxIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M3 8l9-5 9 5v8l-9 5-9-5V8z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M3 8l9 5 9-5M12 13v8" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function TruckIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M2 7h12v10H2zM14 11h4l3 3v3h-7" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <circle cx="6" cy="18" r="2" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17" cy="18" r="2" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+function TeamIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <circle cx="9" cy="9" r="3.5" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M2.5 19c0-3 3-5 6.5-5s6.5 2 6.5 5M15 19c0-2 2-4 4-4s2.5 1 2.5 1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+function ToolsIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M14 6l4-4 4 4-4 4-1-1-3 3M10 14l-3 3-3-3M10 14l-6 6M14.5 9.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
     </svg>
   );
 }

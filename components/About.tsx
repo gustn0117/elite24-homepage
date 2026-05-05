@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IMG } from "@/lib/images";
+import { QuoteIllustration, BlueprintLines } from "@/components/Illustrations";
 
 const VALUES = [
   {
@@ -34,18 +34,13 @@ export default function About() {
     <>
       {/* Brand statement */}
       <section className="section bg-white">
-        <div className="container-pad grid lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-5">
+        <div className="container-pad grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6">
             <span className="eyebrow">Who we are</span>
             <h2 className="mt-5 section-title text-balance">
               기업의 이전, 한 곳에 책임을 둡니다
             </h2>
-            <div className="mt-7 relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <img src={IMG.workspace} alt="기업 업무 환경" className="image-cover" />
-            </div>
-          </div>
-          <div className="lg:col-span-7 lg:pt-2">
-            <p className="text-[16px] leading-[1.95] text-navy-700 text-pretty">
+            <p className="mt-5 text-[16px] leading-[1.95] text-navy-700 text-pretty">
               (주)엘리트24는 사무실·공장·창고 등 기업 이전을 전문으로 하는
               이사짐센터입니다. 기업이라는 단위가 가지는{" "}
               <strong className="text-brand-navy">정확한 일정</strong>,{" "}
@@ -54,13 +49,12 @@ export default function About() {
               모두 충족시키기 위해 가정이사는 진행하지 않고 오직 기업이사에만
               집중합니다.
             </p>
-            <p className="mt-5 text-[15px] leading-[1.95] text-navy-600 text-pretty">
+            <p className="mt-4 text-[15px] leading-[1.95] text-navy-600 text-pretty">
               포장재·차량·인력을 자체 운용하며, 대표가 상담과 작업 현장을 직접
-              챙기기 때문에 결정과 책임이 한 곳에서 이루어집니다. 그 결과
-              약속된 일정과 견적 안에서 안정된 작업 품질을 유지할 수 있습니다.
+              챙기기 때문에 결정과 책임이 한 곳에서 이루어집니다.
             </p>
 
-            <div className="mt-9 grid sm:grid-cols-3 gap-3">
+            <div className="mt-8 grid sm:grid-cols-3 gap-3">
               {[
                 { v: "100%", l: "기업이사 전문" },
                 { v: "1ON1", l: "대표 직접 상담" },
@@ -68,7 +62,7 @@ export default function About() {
               ].map((s) => (
                 <div
                   key={s.l}
-                  className="rounded-2xl bg-navy-50/70 px-5 py-5 text-center sm:text-left"
+                  className="rounded-2xl bg-navy-50/70 px-5 py-5"
                 >
                   <div className="text-2xl font-extrabold text-brand-orange">
                     {s.v}
@@ -78,6 +72,12 @@ export default function About() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-6">
+            <div className="relative aspect-square max-w-md mx-auto">
+              <QuoteIllustration className="absolute inset-0 w-full h-full" />
             </div>
           </div>
         </div>
@@ -93,10 +93,11 @@ export default function About() {
             </h2>
           </div>
           <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {VALUES.map((v) => (
+            {VALUES.map((v, i) => (
               <div
                 key={v.title}
-                className="bg-white rounded-2xl p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition"
+                className="bg-white rounded-2xl p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition animate-fade-up"
+                style={{ animationDelay: `${i * 0.08}s` }}
               >
                 <div className="w-12 h-12 rounded-xl bg-brand-orange/15 text-brand-orangeDark flex items-center justify-center">
                   <v.icon />
@@ -115,49 +116,36 @@ export default function About() {
 
       {/* Representative */}
       <section className="section bg-white">
-        <div className="container-pad grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 order-2 lg:order-1">
-            <span className="chip">Representative</span>
-            <h2 className="mt-5 section-title text-balance">
-              대표 인사말
-            </h2>
-            <p className="mt-5 text-[15.5px] leading-[1.95] text-navy-700 text-pretty">
-              저희 (주)엘리트24를 찾아주신 모든 기업 고객 여러분께 진심으로
-              감사드립니다.
-            </p>
-            <p className="mt-4 text-[15.5px] leading-[1.95] text-navy-700 text-pretty">
-              저희는 사무실·공장·창고 등 기업 이전 현장에서 쌓아온 경험을
-              바탕으로, 기업 고객이 가장 중요하게 여기는{" "}
-              <strong className="text-brand-navy">시간·비용·자산의 안전</strong>
-              을 지키는 데 모든 자원을 집중하고 있습니다.
-            </p>
-            <p className="mt-4 text-[15.5px] leading-[1.95] text-navy-700 text-pretty">
-              기업의 새로운 출발을 함께 만들 수 있도록, 정직한 견적과 책임감
-              있는 작업으로 보답드리겠습니다.
-            </p>
+        <div className="container-pad">
+          <div className="relative max-w-4xl mx-auto bg-gradient-to-br from-brand-navy to-brand-navyDeep text-white rounded-3xl p-8 sm:p-12 lg:p-14 overflow-hidden">
+            <BlueprintLines className="absolute inset-0 w-full h-full text-white opacity-30" />
+            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand-orange/15 blur-3xl animate-pulse-soft" aria-hidden />
 
-            <div className="mt-7 inline-flex items-center gap-3 rounded-full bg-brand-orangeSoft border border-amber-200 px-5 py-3">
-              <div className="text-[11px] tracking-wider2 uppercase font-bold text-brand-orangeDark">
-                CEO
+            <div className="relative">
+              <span className="chip bg-brand-orange text-white">대표 인사말</span>
+              <h2 className="mt-5 text-[26px] sm:text-3xl lg:text-[34px] leading-[1.3] font-bold text-balance">
+                모든 작업은 결국 책임의 문제입니다
+              </h2>
+              <div className="mt-6 max-w-2xl">
+                <p className="text-[15.5px] leading-[1.95] text-white/85 text-pretty">
+                  저희 (주)엘리트24를 찾아주신 모든 기업 고객 여러분께 진심으로
+                  감사드립니다. 사무실·공장·창고 이전 현장에서 쌓아온 경험을 바탕으로,
+                  기업 고객이 가장 중요하게 여기는{" "}
+                  <strong className="text-brand-orange">시간·비용·자산의 안전</strong>을
+                  지키는 데 모든 자원을 집중하고 있습니다.
+                </p>
+                <p className="mt-4 text-[15px] leading-[1.95] text-white/75 text-pretty">
+                  기업의 새로운 출발을 함께 만들 수 있도록, 정직한 견적과 책임감
+                  있는 작업으로 보답드리겠습니다.
+                </p>
               </div>
-              <span className="w-px h-4 bg-amber-300" />
-              <div className="text-[15px] font-bold text-brand-navy">대표 황필성</div>
-            </div>
-          </div>
 
-          <div className="lg:col-span-6 order-1 lg:order-2">
-            <div className="grid grid-cols-12 gap-3">
-              <div className="col-span-7 relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <img src={IMG.meeting} alt="" className="image-cover" />
-              </div>
-              <div className="col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <img src={IMG.laptopWork} alt="" className="image-cover" />
-              </div>
-              <div className="col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <img src={IMG.movingBoxes} alt="" className="image-cover" />
-              </div>
-              <div className="col-span-7 relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <img src={IMG.warehouse} alt="" className="image-cover" />
+              <div className="mt-7 inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur border border-white/20 px-5 py-3">
+                <div className="text-[11px] tracking-wider2 uppercase font-bold text-brand-orange">
+                  CEO
+                </div>
+                <span className="w-px h-4 bg-white/30" />
+                <div className="text-[15px] font-bold">대표 황필성</div>
               </div>
             </div>
           </div>
@@ -165,36 +153,34 @@ export default function About() {
       </section>
 
       {/* Company info */}
-      <section className="section-tight bg-brand-navy text-white">
+      <section className="section-tight bg-navy-50/40">
         <div className="container-pad">
-          <div className="grid lg:grid-cols-12 gap-8 items-end mb-8">
-            <div className="lg:col-span-7">
-              <span className="chip bg-brand-orange text-white">Corporate Information</span>
-              <h2 className="mt-5 text-[26px] sm:text-3xl lg:text-[34px] leading-[1.3] font-bold text-white text-balance">
-                사업자 정보
-              </h2>
-            </div>
-            <div className="lg:col-span-5 lg:text-right">
-              <Link href="/contact" className="btn-primary">
-                상담 문의 <ArrowIcon />
-              </Link>
-            </div>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="chip">Corporate Information</span>
+            <h2 className="mt-5 section-title text-balance">사업자 정보</h2>
           </div>
-          <ul className="rounded-2xl bg-white/5 backdrop-blur border border-white/10 overflow-hidden">
+          <ul className="rounded-2xl bg-white border border-navy-100 overflow-hidden max-w-3xl mx-auto shadow-card">
             {COMPANY_INFO.map((c, i) => (
               <li
                 key={c.label}
                 className={`grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 text-[15px] ${
-                  i !== COMPANY_INFO.length - 1 ? "border-b border-white/10" : ""
+                  i !== COMPANY_INFO.length - 1 ? "border-b border-navy-100" : ""
                 }`}
               >
                 <div className="col-span-4 sm:col-span-3 text-[12px] leading-[1.6] tracking-wider2 uppercase text-brand-orange font-bold pt-1">
                   {c.label}
                 </div>
-                <div className="col-span-8 sm:col-span-9 text-white">{c.value}</div>
+                <div className="col-span-8 sm:col-span-9 text-navy-800 font-medium">
+                  {c.value}
+                </div>
               </li>
             ))}
           </ul>
+          <div className="mt-8 flex justify-center">
+            <Link href="/contact" className="btn-primary">
+              상담 문의 <ArrowIcon />
+            </Link>
+          </div>
         </div>
       </section>
     </>

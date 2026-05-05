@@ -13,9 +13,10 @@ export default function HomeCTA() {
             className="image-cover opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/95 via-brand-navy/85 to-brand-navy/40" />
+          <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-brand-orange/15 blur-3xl animate-pulse-soft" aria-hidden />
 
           <div className="relative grid lg:grid-cols-12 gap-8 items-center p-8 sm:p-12 lg:p-14">
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 animate-fade-up">
               <span className="chip bg-brand-orange text-white">Free Consultation</span>
               <h2 className="mt-5 text-[26px] sm:text-3xl lg:text-[36px] leading-[1.3] font-bold tracking-tight text-balance">
                 기업이사, 지금 견적부터 받아보세요
@@ -29,7 +30,7 @@ export default function HomeCTA() {
             <div className="lg:col-span-5 flex flex-col gap-3">
               <a
                 href="tel:01039566618"
-                className="flex items-center justify-between gap-4 rounded-2xl bg-brand-orange text-white px-6 py-5 hover:bg-brand-orangeDark transition"
+                className="flex items-center justify-between gap-4 rounded-2xl bg-brand-orange text-white px-6 py-5 hover:bg-brand-orangeDark hover:-translate-y-0.5 transition"
               >
                 <div>
                   <div className="text-[11px] tracking-wider2 uppercase font-bold opacity-90">
@@ -41,7 +42,7 @@ export default function HomeCTA() {
               </a>
               <Link
                 href="/contact"
-                className="flex items-center justify-between gap-4 rounded-2xl bg-white/10 backdrop-blur border border-white/20 px-6 py-5 hover:bg-white/20 transition"
+                className="flex items-center justify-between gap-4 rounded-2xl bg-white/10 backdrop-blur border border-white/20 px-6 py-5 hover:bg-white/20 hover:-translate-y-0.5 transition"
               >
                 <div>
                   <div className="text-[11px] tracking-wider2 uppercase font-bold text-brand-orange">

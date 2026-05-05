@@ -9,8 +9,24 @@ const STEPS = [
 
 export default function HomeProcess() {
   return (
-    <section className="section bg-navy-50/40">
-      <div className="container-pad">
+    <section className="section bg-navy-50/40 relative overflow-hidden">
+      <svg
+        viewBox="0 0 1200 200"
+        className="hidden lg:block absolute top-44 inset-x-0 w-full h-[120px] pointer-events-none"
+        fill="none"
+        aria-hidden
+      >
+        <path
+          d="M150 80 C 350 -10, 500 170, 700 70 S 1000 130, 1050 60"
+          stroke="#f5a623"
+          strokeWidth="1.5"
+          strokeDasharray="6 8"
+          opacity="0.4"
+          strokeLinecap="round"
+        />
+      </svg>
+
+      <div className="container-pad relative">
         <div className="text-center max-w-2xl mx-auto">
           <span className="chip">Process</span>
           <h2 className="mt-5 section-title text-balance">
@@ -22,16 +38,18 @@ export default function HomeProcess() {
           </p>
         </div>
 
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 relative">
-          {/* connecting line */}
-          <div className="hidden lg:block absolute top-8 left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-brand-orange/35 to-transparent" />
-          {STEPS.map((s) => (
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {STEPS.map((s, i) => (
             <div
               key={s.no}
-              className="relative bg-white rounded-2xl p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition border border-navy-100/50"
+              className="relative bg-white rounded-2xl p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition border border-navy-100/50 animate-fade-up"
+              style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <div className="w-12 h-12 rounded-full bg-brand-orange text-white flex items-center justify-center font-extrabold text-[15px]">
-                {s.no}
+              <div className="relative w-12 h-12">
+                <div className="absolute inset-0 rounded-full bg-brand-orange/20 animate-pulse-soft" aria-hidden />
+                <div className="relative w-12 h-12 rounded-full bg-brand-orange text-white flex items-center justify-center font-extrabold text-[15px]">
+                  {s.no}
+                </div>
               </div>
               <h3 className="mt-5 text-[17px] font-bold text-brand-navy">
                 {s.title}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IMG } from "@/lib/images";
+import { ProcessIllustration } from "@/components/Illustrations";
 
 const STEPS = [
   {
@@ -8,7 +8,7 @@ const STEPS = [
     title: "전화 / 온라인 상담",
     desc: "이전 일정과 규모를 알려주시면 1차 개략 견적을 빠르게 안내드립니다. 상담 단계에서 작업 가능 여부와 예상 일정도 함께 공유합니다.",
     points: ["대표 직접 상담", "당일 응대 원칙", "평일·주말 모두 가능"],
-    image: IMG.laptopWork,
+    icon: ChatIcon,
   },
   {
     no: "02",
@@ -16,7 +16,7 @@ const STEPS = [
     title: "현장 방문 조사",
     desc: "현장을 직접 방문하여 짐의 양, 작업 환경, 진입로, 엘리베이터 사용 여부를 점검합니다. 현장 조사는 무료이며, 추가 작업 가능성을 미리 안내드립니다.",
     points: ["짐 규모·동선 확인", "장비 필요 여부 점검", "특이사항 사전 공유"],
-    image: IMG.warehouseAisle,
+    icon: ClipIcon,
   },
   {
     no: "03",
@@ -24,7 +24,7 @@ const STEPS = [
     title: "정확한 견적 제안",
     desc: "현장 조사 결과를 바탕으로 합리적이고 명확한 최종 견적을 안내드립니다. 추가 작업이 발생할 가능성이 있는 부분은 견적서에 모두 반영합니다.",
     points: ["기본 단가 + 추가 작업 명시", "부가세·옵션 별도 표기", "투명한 산정 기준"],
-    image: IMG.meeting,
+    icon: DocIcon,
   },
   {
     no: "04",
@@ -32,14 +32,14 @@ const STEPS = [
     title: "이사 진행 · 마무리",
     desc: "전문 인력이 약속한 일정에 맞춰 안전하게 작업을 진행합니다. 작업 종료 후 기본 정리까지 마치고 현장을 인계드립니다.",
     points: ["전 과정 한 팀 진행", "안전 작업 기준 적용", "기본 정리 포함"],
-    image: IMG.movingBoxes,
+    icon: TruckIcon,
   },
 ];
 
 const SAFETY = [
-  { title: "안전 포장", desc: "전용 포장재·완충재로 자산 손상을 사전에 방지합니다." },
-  { title: "보험 가입", desc: "필요 시 작업 보험을 통해 추가 보호 장치를 마련합니다." },
-  { title: "동선 점검", desc: "작업 전 진입로와 동선을 점검해 사고 가능성을 차단합니다." },
+  { title: "안전 포장", desc: "전용 포장재·완충재로 자산 손상을 사전에 방지합니다.", icon: BoxIcon },
+  { title: "보험 가입", desc: "필요 시 작업 보험을 통해 추가 보호 장치를 마련합니다.", icon: ShieldIcon },
+  { title: "동선 점검", desc: "작업 전 진입로와 동선을 점검해 사고 가능성을 차단합니다.", icon: RouteIcon },
 ];
 
 const FAQS = [
@@ -50,10 +50,10 @@ const FAQS = [
 export default function Process() {
   return (
     <>
-      {/* Steps */}
+      {/* Hero illus */}
       <section className="section bg-white">
         <div className="container-pad">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="chip">Process</span>
             <h2 className="mt-5 section-title text-balance">
               상담부터 마무리까지, 명확한 4단계
@@ -63,50 +63,49 @@ export default function Process() {
               안에서 책임감 있게 마무리합니다.
             </p>
           </div>
+          <div className="relative max-w-3xl mx-auto aspect-[5/3] rounded-3xl overflow-hidden bg-navy-50/60 border border-navy-100">
+            <ProcessIllustration className="absolute inset-0 w-full h-full" />
+          </div>
 
-          <ol className="space-y-10 lg:space-y-14">
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {STEPS.map((s, i) => (
-              <li
+              <div
                 key={s.no}
-                className={`grid lg:grid-cols-12 gap-8 items-center ${
-                  i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
-                }`}
+                className="relative bg-white rounded-2xl p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition border border-navy-100/40 animate-fade-up"
+                style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <div className="lg:col-span-5">
-                  <div className="relative aspect-[5/4] rounded-3xl overflow-hidden">
-                    <img src={s.image} alt={s.title} className="image-cover" />
+                <div className="flex items-center gap-3">
+                  <span className="w-12 h-12 rounded-full bg-brand-orange text-white flex items-center justify-center font-extrabold relative">
+                    <span className="absolute inset-0 rounded-full bg-brand-orange/30 animate-pulse-soft" aria-hidden />
+                    <span className="relative">{s.no}</span>
+                  </span>
+                  <div className="text-brand-navy/70">
+                    <s.icon />
                   </div>
                 </div>
-                <div className="lg:col-span-7 lg:px-2">
-                  <div className="flex items-center gap-3">
-                    <span className="w-12 h-12 rounded-full bg-brand-orange text-white flex items-center justify-center font-extrabold">
-                      {s.no}
-                    </span>
-                    <span className="text-[12px] tracking-wider2 uppercase text-brand-orange font-bold">
-                      {s.label}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-[22px] sm:text-2xl leading-[1.3] font-bold text-brand-navy text-balance">
-                    {s.title}
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-[1.85] text-navy-700 text-pretty">
-                    {s.desc}
-                  </p>
-                  <ul className="mt-5 grid sm:grid-cols-3 gap-2.5">
-                    {s.points.map((p) => (
-                      <li
-                        key={p}
-                        className="flex items-center gap-2 text-[13.5px] leading-[1.4] text-navy-700 bg-navy-50/60 rounded-xl px-3.5 py-2.5"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="mt-4 text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
+                  {s.label}
                 </div>
-              </li>
+                <h3 className="mt-1 text-[17px] font-bold text-brand-navy">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-[13.5px] leading-[1.85] text-navy-600 text-pretty">
+                  {s.desc}
+                </p>
+                <ul className="mt-4 space-y-1.5">
+                  {s.points.map((p) => (
+                    <li
+                      key={p}
+                      className="flex items-center gap-2 text-[13px] leading-[1.5] text-navy-700"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 
@@ -120,15 +119,19 @@ export default function Process() {
             </h2>
           </div>
           <div className="mt-10 grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {SAFETY.map((s) => (
+            {SAFETY.map((s, i) => (
               <div
                 key={s.title}
-                className="bg-white rounded-2xl p-6 shadow-card hover:shadow-cardHover transition"
+                className="bg-white rounded-2xl p-6 shadow-card hover:shadow-cardHover transition animate-fade-up"
+                style={{ animationDelay: `${i * 0.08}s` }}
               >
-                <div className="text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
+                <div className="w-11 h-11 rounded-xl bg-brand-orange/15 text-brand-orangeDark flex items-center justify-center">
+                  <s.icon />
+                </div>
+                <div className="mt-4 text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
                   Principle
                 </div>
-                <h3 className="mt-3 text-[17px] font-bold text-brand-navy">
+                <h3 className="mt-1 text-[17px] font-bold text-brand-navy">
                   {s.title}
                 </h3>
                 <p className="mt-2 text-[13.5px] leading-[1.85] text-navy-600 text-pretty">
@@ -185,6 +188,63 @@ function ArrowIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
       <path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function ChatIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function ClipIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <rect x="6" y="4" width="12" height="17" rx="2" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M9 4h6M9 10h6M9 14h6M9 18h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+function DocIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M14 3v5h5M9 13h6M9 17h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function TruckIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M2 7h12v10H2zM14 11h4l3 3v3h-7" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <circle cx="6" cy="18" r="2" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17" cy="18" r="2" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+function BoxIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M3 8l9-5 9 5v8l-9 5-9-5V8z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M3 8l9 5 9-5M12 13v8" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function ShieldIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3l8 3v6c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9V6l8-3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M9 12l2.2 2.2L15 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function RouteIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <circle cx="6" cy="6" r="2.5" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="18" cy="18" r="2.5" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M6 8.5v3a4 4 0 004 4h3.5M18 15.5v-3a4 4 0 00-4-4h-3.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IMG } from "@/lib/images";
+import { OfficeIllustration } from "@/components/Illustrations";
 
 const PILLARS = [
   {
@@ -34,8 +34,8 @@ export default function HomeIntro() {
               기업 환경에서 요구되는 정확성·안전성·책임감을 가장 중요한 가치로 삼습니다.
             </p>
 
-            <div className="mt-8 relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <img src={IMG.meeting} alt="기업 회의 장면" className="image-cover" />
+            <div className="mt-8 relative aspect-[5/4] rounded-2xl overflow-hidden bg-navy-50/70 border border-navy-100">
+              <OfficeIllustration className="absolute inset-0 w-full h-full" />
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -49,10 +49,11 @@ export default function HomeIntro() {
           </div>
 
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-            {PILLARS.map((p) => (
+            {PILLARS.map((p, i) => (
               <div
                 key={p.title}
-                className="rounded-2xl bg-navy-50/60 p-7 hover:bg-white hover:shadow-card transition border border-transparent hover:border-navy-100"
+                className="rounded-2xl bg-navy-50/60 p-7 hover:bg-white hover:shadow-card transition border border-transparent hover:border-navy-100 animate-fade-up"
+                style={{ animationDelay: `${i * 0.08}s` }}
               >
                 <div className="w-11 h-11 rounded-xl bg-brand-orange/15 text-brand-orangeDark flex items-center justify-center">
                   <p.icon />
@@ -65,15 +66,23 @@ export default function HomeIntro() {
                 </p>
               </div>
             ))}
-            <div className="rounded-2xl bg-brand-navy text-white p-7 sm:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-              <div>
-                <div className="text-[12px] tracking-wider2 uppercase text-brand-orange font-bold">Direct Care</div>
-                <h3 className="mt-2 text-xl font-bold">대표가 직접 상담하고 책임집니다.</h3>
+            <div className="rounded-2xl bg-brand-navy text-white p-7 sm:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-5 relative overflow-hidden">
+              <div
+                className="absolute -right-20 -bottom-20 w-56 h-56 rounded-full bg-brand-orange/20 blur-3xl animate-pulse-soft"
+                aria-hidden
+              />
+              <div className="relative">
+                <div className="text-[12px] tracking-wider2 uppercase text-brand-orange font-bold">
+                  Direct Care
+                </div>
+                <h3 className="mt-2 text-xl font-bold">
+                  대표가 직접 상담하고 책임집니다.
+                </h3>
                 <p className="mt-2 text-[14px] leading-[1.7] text-white/70 max-w-md">
                   결정과 책임이 한 곳에서 이루어지므로 작업 품질이 일정합니다.
                 </p>
               </div>
-              <a href="tel:01039566618" className="btn-primary shrink-0">
+              <a href="tel:01039566618" className="btn-primary shrink-0 relative">
                 <PhoneIcon /> 010-3956-6618
               </a>
             </div>

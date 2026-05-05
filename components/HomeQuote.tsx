@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { IMG } from "@/lib/images";
+import { QuoteIllustration } from "@/components/Illustrations";
 
 export default function HomeQuote() {
   return (
-    <section className="section bg-white">
-      <div className="container-pad grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <section className="section bg-white relative overflow-hidden">
+      <div className="absolute -top-40 -right-32 w-[400px] h-[400px] rounded-full bg-brand-orange/8 blur-3xl pointer-events-none" />
+
+      <div className="container-pad grid lg:grid-cols-12 gap-10 lg:gap-14 items-center relative">
         <div className="lg:col-span-6 order-2 lg:order-1">
           <span className="chip">대표 인사말</span>
           <h2 className="mt-5 section-title text-balance">
@@ -37,19 +39,8 @@ export default function HomeQuote() {
         </div>
 
         <div className="lg:col-span-6 order-1 lg:order-2">
-          <div className="grid grid-cols-12 gap-3">
-            <div className="col-span-8 relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <img src={IMG.workspace} alt="" className="image-cover" />
-            </div>
-            <div className="col-span-4 relative aspect-[3/4] rounded-2xl overflow-hidden mt-8">
-              <img src={IMG.movingBoxes} alt="" className="image-cover" />
-            </div>
-            <div className="col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <img src={IMG.truck} alt="" className="image-cover" />
-            </div>
-            <div className="col-span-7 relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <img src={IMG.boxStack} alt="" className="image-cover" />
-            </div>
+          <div className="relative aspect-square max-w-md mx-auto">
+            <QuoteIllustration className="absolute inset-0 w-full h-full" />
           </div>
         </div>
       </div>

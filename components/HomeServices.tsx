@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { IMG } from "@/lib/images";
+import {
+  OfficeIllustration,
+  FactoryIllustration,
+  InstitutionIllustration,
+} from "@/components/Illustrations";
 
 const SERVICES = [
   {
@@ -7,21 +11,21 @@ const SERVICES = [
     title: "사무실 이전",
     desc: "본사·지사·사무실 전체 이전. IT 장비, OA가구, 서류 보관함까지 안전 포장으로 이송합니다.",
     points: ["IT 장비 안전 포장", "주말·야간 작업 가능", "원스톱 진행"],
-    image: IMG.office,
+    Illus: OfficeIllustration,
   },
   {
     eng: "FACTORY",
     title: "공장 / 창고 이전",
     desc: "생산 라인, 자재, 재고를 무중단으로 이전. 중량물 작업 노하우로 안전 이송합니다.",
     points: ["중량물 운반 전문", "지게차·사다리차 협업", "단계별 분할 이전"],
-    image: IMG.warehouse,
+    Illus: FactoryIllustration,
   },
   {
     eng: "INSTITUTION",
     title: "법인 / 기관 이전",
     desc: "병원, 학원, 관공서 등 기관 이전을 정해진 일정과 비용 안에서 책임지고 진행합니다.",
     points: ["일정 준수", "보안 자료 케어", "사후 정리 지원"],
-    image: IMG.hospital,
+    Illus: InstitutionIllustration,
   },
 ];
 
@@ -41,22 +45,23 @@ export default function HomeServices() {
         </div>
 
         <div className="mt-12 grid md:grid-cols-3 gap-5">
-          {SERVICES.map((s) => (
+          {SERVICES.map((s, i) => (
             <Link
               key={s.title}
               href="/services"
-              className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-cardHover transition"
+              className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-cardHover hover:-translate-y-1 transition-all duration-300 animate-fade-up"
+              style={{ animationDelay: `${i * 0.08}s` }}
             >
-              <div className="relative aspect-[5/3] overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  className="image-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <span className="absolute top-4 left-4 chip bg-white/95">{s.eng}</span>
+              <div className="relative aspect-[5/3] overflow-hidden bg-gradient-to-br from-navy-50 to-white">
+                <s.Illus className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105" />
+                <span className="absolute top-4 left-4 chip bg-white shadow-sm">
+                  {s.eng}
+                </span>
               </div>
               <div className="p-7">
-                <h3 className="text-[20px] font-bold text-brand-navy">{s.title}</h3>
+                <h3 className="text-[20px] font-bold text-brand-navy">
+                  {s.title}
+                </h3>
                 <p className="mt-2 text-[14px] leading-[1.85] text-navy-600 text-pretty">
                   {s.desc}
                 </p>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Process from "@/components/Process";
 import PageHeader from "@/components/PageHeader";
-import { IMG } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "이사절차",
@@ -14,10 +13,9 @@ export default function ProcessPage() {
     <>
       <PageHeader
         eyebrow="Process"
-        title="명확한 4단계, 책임 있는 마무리."
+        title="명확한 4단계, 책임 있는 마무리"
         description="복잡한 단계 없이, 모든 진행 사항을 사전에 공유하고 약속된 일정 안에서 책임감 있게 마무리합니다."
         current="이사절차"
-        image={IMG.truck}
       />
       <Process />
     </>

@@ -1,27 +1,25 @@
 import Link from "next/link";
 import { IMG } from "@/lib/images";
+import { HeaderDecor } from "@/components/Illustrations";
 
 export default function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-brand-navy text-white">
-      <img
-        src={IMG.hero}
-        alt=""
-        aria-hidden
-        className="image-cover opacity-45"
-      />
+      <HeaderDecor className="absolute inset-0 w-full h-full opacity-50" />
       <div
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, rgba(15,29,58,0.78) 0%, rgba(29,53,87,0.6) 100%)",
+            "linear-gradient(135deg, rgba(15,29,58,0.92) 0%, rgba(29,53,87,0.7) 60%, rgba(29,53,87,0.55) 100%)",
         }}
       />
+      <div className="absolute -top-32 -left-32 w-[420px] h-[420px] rounded-full bg-brand-orange/15 blur-[110px] animate-pulse-soft" />
+      <div className="absolute -bottom-40 right-10 w-[460px] h-[460px] rounded-full bg-brand-orange/10 blur-[110px] animate-float-slow" />
 
       <div className="container-pad relative z-10 pt-28 pb-20 sm:pt-32 sm:pb-24 grid lg:grid-cols-12 gap-10 items-center">
-        <div className="lg:col-span-8 animate-fade-up">
+        <div className="lg:col-span-7 animate-fade-up">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur border border-white/20 px-3.5 py-1.5 text-[12px] font-semibold text-white">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-blink" />
             기업이사 전문 · (주)엘리트24
           </span>
 
@@ -51,10 +49,11 @@ export default function Hero() {
               { v: "기업 전문", l: "100% 기업이사" },
               { v: "30만원~", l: "1톤 기본 단가" },
               { v: "당일 응대", l: "빠른 견적 회신" },
-            ].map((s) => (
+            ].map((s, i) => (
               <div
                 key={s.l}
-                className="rounded-2xl bg-white/8 backdrop-blur border border-white/15 px-4 py-4"
+                className="rounded-2xl bg-white/8 backdrop-blur border border-white/15 px-4 py-4 animate-fade-up"
+                style={{ animationDelay: `${0.15 + i * 0.1}s` }}
               >
                 <div className="text-base sm:text-lg font-bold text-white">{s.v}</div>
                 <div className="mt-1.5 text-[11px] sm:text-xs leading-[1.4] text-white/65">
@@ -65,12 +64,30 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="lg:col-span-4 hidden lg:block animate-fade-in">
-          <div className="relative max-w-sm ml-auto">
-            <div className="relative aspect-[4/5] rounded-[28px] overflow-hidden shadow-cardHover">
-              <img src={IMG.workspace} alt="" className="image-cover" />
-              <div className="absolute inset-0 photo-veil-soft" />
-              <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/95 text-brand-navy p-5">
+        <div className="lg:col-span-5 hidden lg:block animate-fade-in">
+          <div className="relative max-w-md ml-auto">
+            <div className="absolute -top-4 -left-4 w-24 h-24 rounded-full bg-brand-orange/30 blur-2xl animate-pulse-soft" />
+            <div className="absolute -bottom-6 -right-6 w-28 h-28 rounded-full bg-white/10 blur-2xl" />
+
+            <div className="relative aspect-[4/5] rounded-[28px] overflow-hidden shadow-cardHover ring-1 ring-white/15">
+              <img src={IMG.building} alt="기업 외관 빌딩" className="image-cover" />
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(180deg, rgba(15,29,58,0.1) 30%, rgba(15,29,58,0.85) 100%)",
+                }}
+              />
+
+              {/* 떠다니는 카드 */}
+              <div className="absolute top-5 left-5 right-5 flex justify-end">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/95 text-brand-navy px-3 py-1.5 text-[11px] font-bold shadow-card">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-blink" />
+                  Corporate Moving
+                </span>
+              </div>
+
+              <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/95 text-brand-navy p-5 shadow-card">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-brand-orange/15 flex items-center justify-center text-brand-orangeDark">
                     <CheckIcon />
@@ -80,18 +97,17 @@ export default function Hero() {
                       Trusted
                     </div>
                     <div className="mt-0.5 text-[14px] font-bold leading-[1.3]">
-                      사무실·공장·창고 이전
+                      사무실 · 공장 · 창고 이전
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="absolute -top-3 -left-3 w-24 h-24 rounded-full bg-brand-orange/20 blur-xl" />
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-white/55 z-10">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-white/55 z-10 animate-fade-in">
         <span className="text-[10px] tracking-wider2 uppercase">Scroll</span>
         <span className="block w-px h-7 bg-white/40" />
       </div>
