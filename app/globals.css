@@ -3,118 +3,100 @@
 @tailwind utilities;
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap");
-
-:root {
-  --c-navy: #0f1d3a;
-  --c-navy-deep: #070f24;
-  --c-gold: #c9a45c;
-  --c-gold-light: #e2c690;
-}
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  color: #14213d;
+  color: #1a2540;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "ss01", "ss02";
   word-break: keep-all;
   overflow-wrap: break-word;
 }
 
 ::selection {
-  background: rgba(201, 164, 92, 0.35);
-  color: #0f1d3a;
+  background: rgba(245, 166, 35, 0.25);
+  color: #1d3557;
 }
 
 /* Tailwind utilities ship their own line-height. Force tighter leading on
-   display headings so spacing reads premium regardless of utility order. */
+   display headings so spacing reads consistent regardless of utility order. */
 h1,
 h2,
 h3,
 h4 {
-  line-height: 1.2 !important;
+  line-height: 1.3 !important;
   word-break: keep-all;
+  letter-spacing: -0.01em;
 }
 
 @layer components {
   .container-pad {
-    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12;
-  }
-
-  .container-narrow {
-    @apply max-w-5xl mx-auto px-5 sm:px-8;
+    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10;
   }
 
   .section {
-    @apply py-24 sm:py-32;
+    @apply py-20 sm:py-24;
   }
 
   .section-tight {
-    @apply py-16 sm:py-20;
+    @apply py-14 sm:py-16;
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-eyebrow text-brand-gold;
+    @apply inline-flex items-center gap-2 text-[12px] leading-none font-bold uppercase tracking-wider2 text-brand-orange;
   }
+
   .eyebrow::before {
     content: "";
-    @apply block w-8 h-px bg-brand-gold;
+    @apply block w-5 h-0.5 bg-brand-orange;
   }
+
   .eyebrow-light {
-    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-eyebrow text-brand-goldLight;
+    @apply inline-flex items-center gap-2 text-[12px] leading-none font-bold uppercase tracking-wider2 text-brand-orange;
   }
   .eyebrow-light::before {
     content: "";
-    @apply block w-8 h-px bg-brand-goldLight;
+    @apply block w-5 h-0.5 bg-brand-orange;
   }
 
   .section-title {
-    @apply text-3xl sm:text-4xl lg:text-[44px] leading-[1.2] font-semibold tracking-tight text-brand-navy;
-  }
-
-  .section-title-serif {
-    @apply font-serif text-[34px] sm:text-5xl lg:text-[56px] leading-[1.15] font-medium tracking-tight text-brand-navy;
+    @apply text-[26px] sm:text-3xl lg:text-[36px] leading-[1.3] font-bold tracking-tight text-brand-navy;
   }
 
   .section-sub {
-    @apply mt-6 text-[15px] sm:text-base lg:text-lg leading-[1.95] text-navy-600;
-  }
-
-  .gold-line {
-    @apply block w-12 h-px bg-brand-gold;
+    @apply mt-4 text-[15px] sm:text-base leading-[1.8] text-navy-600;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-3 rounded-none bg-brand-navy px-8 py-4 text-[12px] leading-none font-semibold tracking-wider2 uppercase text-white transition hover:bg-brand-navyDeep;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-orangeDark hover:-translate-y-0.5 shadow-[0_10px_24px_-12px_rgba(245,166,35,0.6)];
   }
 
-  .btn-gold {
-    @apply inline-flex items-center justify-center gap-3 rounded-none bg-brand-gold px-8 py-4 text-[12px] leading-none font-semibold tracking-wider2 uppercase text-white transition hover:bg-brand-goldDark;
+  .btn-navy {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-navyDeep hover:-translate-y-0.5;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-3 rounded-none border border-brand-navy/25 bg-transparent px-8 py-4 text-[12px] leading-none font-semibold tracking-wider2 uppercase text-brand-navy transition hover:border-brand-navy hover:bg-brand-navy hover:text-white;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-navy-200 bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:border-brand-orange hover:text-brand-orange;
   }
 
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center gap-3 rounded-none border border-white/30 bg-white/5 px-8 py-4 text-[12px] leading-none font-semibold tracking-wider2 uppercase text-white backdrop-blur transition hover:bg-white/15;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full bg-brand-orangeSoft px-3 py-1 text-[11px] leading-none font-bold tracking-wider2 uppercase text-brand-orangeDark;
   }
 
   .input {
-    @apply w-full border border-navy-200/60 bg-white px-4 py-3.5 text-[15px] leading-normal text-navy-900 outline-none transition placeholder:text-navy-300 focus:border-brand-gold focus:shadow-[0_0_0_3px_rgba(201,164,92,0.12)];
+    @apply w-full rounded-xl border border-navy-200 bg-white px-4 py-3.5 text-[15px] leading-normal text-navy-900 outline-none transition placeholder:text-navy-300 focus:border-brand-orange focus:shadow-[0_0_0_3px_rgba(245,166,35,0.15)];
   }
 
   .label {
-    @apply block text-[11px] leading-none font-semibold uppercase tracking-wider2 text-navy-500 mb-2;
-  }
-
-  .divider-soft {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-navy-200/70 to-transparent;
+    @apply block text-[12px] leading-none font-semibold text-navy-700 mb-2;
   }
 }
 
@@ -125,51 +107,21 @@ h4 {
   .text-pretty {
     text-wrap: pretty;
   }
-  .ornament-grid {
-    background-image:
-      linear-gradient(rgba(201, 164, 92, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(201, 164, 92, 0.07) 1px, transparent 1px);
-    background-size: 80px 80px;
-  }
-  .gold-gradient-text {
-    background: linear-gradient(135deg, #e2c690 0%, #c9a45c 60%, #9c7a3c 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
   .image-cover {
     @apply absolute inset-0 w-full h-full object-cover;
   }
   .photo-veil {
     background-image: linear-gradient(
       180deg,
-      rgba(7, 15, 36, 0.4) 0%,
-      rgba(7, 15, 36, 0.78) 60%,
-      rgba(7, 15, 36, 0.92) 100%
+      rgba(15, 29, 58, 0.35) 0%,
+      rgba(15, 29, 58, 0.7) 100%
     );
   }
   .photo-veil-soft {
     background-image: linear-gradient(
       180deg,
-      rgba(7, 15, 36, 0.25) 0%,
-      rgba(7, 15, 36, 0.55) 100%
+      rgba(15, 29, 58, 0.1) 0%,
+      rgba(15, 29, 58, 0.5) 100%
     );
-  }
-  .photo-veil-side {
-    background-image: linear-gradient(
-      90deg,
-      rgba(7, 15, 36, 0.85) 0%,
-      rgba(7, 15, 36, 0.55) 50%,
-      rgba(7, 15, 36, 0.25) 100%
-    );
-  }
-  .grain::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    mix-blend-mode: overlay;
   }
 }

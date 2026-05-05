@@ -3,56 +3,53 @@ import { IMG } from "@/lib/images";
 
 export default function HomeCTA() {
   return (
-    <section className="relative section-tight bg-cream overflow-hidden">
-      <div className="container-pad relative">
-        <div className="relative overflow-hidden border border-navy-100/70 grain">
+    <section className="section-tight bg-white">
+      <div className="container-pad">
+        <div className="relative overflow-hidden rounded-3xl bg-brand-navy text-white">
           <img
-            src={IMG.buildingDusk}
+            src={IMG.building}
             alt=""
             aria-hidden
-            className="image-cover opacity-30"
+            className="image-cover opacity-25"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/95 via-brand-navy/85 to-brand-navy/40" />
 
-          <div className="relative grid lg:grid-cols-12 gap-10 items-center p-10 sm:p-14 lg:p-20">
+          <div className="relative grid lg:grid-cols-12 gap-8 items-center p-8 sm:p-12 lg:p-14">
             <div className="lg:col-span-7">
-              <span className="eyebrow">Free Consultation</span>
-              <h2 className="mt-6 section-title-serif text-balance">
-                기업이사, 지금 견적부터 받아보세요.
+              <span className="chip bg-brand-orange text-white">Free Consultation</span>
+              <h2 className="mt-5 text-[26px] sm:text-3xl lg:text-[36px] leading-[1.3] font-bold tracking-tight text-balance">
+                기업이사, 지금 견적부터 받아보세요
               </h2>
-              <p className="section-sub max-w-xl text-pretty">
-                평일·주말·야간 상담 모두 가능합니다. 전화·이메일·온라인 양식
-                어디로 연락 주시든 빠르게 답변드리겠습니다.
+              <p className="mt-4 text-[15px] sm:text-base leading-[1.85] text-white/75 max-w-xl text-pretty">
+                평일·주말·야간 상담 모두 가능합니다. 전화·이메일·온라인 양식 어디로
+                연락 주시든 빠르게 답변드리겠습니다.
               </p>
             </div>
-            <div className="lg:col-span-5 flex flex-col items-stretch gap-4">
+
+            <div className="lg:col-span-5 flex flex-col gap-3">
               <a
                 href="tel:01039566618"
-                className="group flex items-center justify-between gap-4 border border-brand-navy bg-brand-navy text-white px-7 py-6 hover:bg-brand-navyDeep transition"
+                className="flex items-center justify-between gap-4 rounded-2xl bg-brand-orange text-white px-6 py-5 hover:bg-brand-orangeDark transition"
               >
                 <div>
-                  <div className="text-[10px] leading-none tracking-eyebrow uppercase text-brand-goldLight">
+                  <div className="text-[11px] tracking-wider2 uppercase font-bold opacity-90">
                     Direct Call
                   </div>
-                  <div className="mt-3 text-2xl leading-[1.1] font-bold">
-                    010-3956-6618
-                  </div>
+                  <div className="mt-1 text-xl font-extrabold">010-3956-6618</div>
                 </div>
                 <ArrowIcon />
               </a>
               <Link
                 href="/contact"
-                className="group flex items-center justify-between gap-4 border border-navy-200 bg-white px-7 py-6 hover:border-brand-gold hover:bg-brand-gold/5 transition"
+                className="flex items-center justify-between gap-4 rounded-2xl bg-white/10 backdrop-blur border border-white/20 px-6 py-5 hover:bg-white/20 transition"
               >
                 <div>
-                  <div className="text-[10px] leading-none tracking-eyebrow uppercase text-brand-gold">
+                  <div className="text-[11px] tracking-wider2 uppercase font-bold text-brand-orange">
                     Online Inquiry
                   </div>
-                  <div className="mt-3 text-lg leading-[1.3] font-bold text-brand-navy">
-                    온라인 견적 요청서 작성
-                  </div>
+                  <div className="mt-1 text-base font-bold">온라인 견적 요청서 작성</div>
                 </div>
-                <ArrowIcon className="text-brand-navy" />
+                <ArrowIcon />
               </Link>
             </div>
           </div>
@@ -62,15 +59,10 @@ export default function HomeCTA() {
   );
 }
 
-function ArrowIcon({ className = "" }: { className?: string }) {
+function ArrowIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className={className}>
-      <path
-        d="M5 12h14m0 0l-6-6m6 6l-6 6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

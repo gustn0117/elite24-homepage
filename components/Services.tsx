@@ -3,73 +3,51 @@ import { IMG } from "@/lib/images";
 
 const SERVICES = [
   {
-    no: "01",
-    eng: "Office Relocation",
-    kr: "사무실 이전",
+    eng: "OFFICE RELOCATION",
+    title: "사무실 이전",
     intro: "본사·지사·사무실 전체 이전을 책임집니다.",
-    desc:
-      "임원실·업무공간·회의실의 IT 장비, OA가구, 서류 보관함까지 안전 포장으로 이송합니다. 야간·주말 작업이 가능하여 업무 공백을 최소화합니다.",
+    desc: "임원실·업무공간·회의실의 IT 장비, OA가구, 서류 보관함까지 안전 포장으로 이송합니다. 야간·주말 작업이 가능하여 업무 공백을 최소화합니다.",
     features: [
-      "PC · 모니터 · 서버 등 IT 장비 안전 포장",
-      "OA가구 · 캐비넷 · 서류 무중단 이전",
-      "주말 · 공휴일 · 야간 작업 가능",
-      "사후 정리 · 배치 작업 지원",
+      "PC·모니터·서버 등 IT 장비 안전 포장",
+      "OA가구·캐비넷·서류 무중단 이전",
+      "주말·공휴일·야간 작업 가능",
+      "사후 정리·배치 작업 지원",
     ],
     image: IMG.office,
   },
   {
-    no: "02",
-    eng: "Factory & Warehouse",
-    kr: "공장 · 창고 이전",
+    eng: "FACTORY & WAREHOUSE",
+    title: "공장 / 창고 이전",
     intro: "생산 라인과 자재·재고를 무중단으로.",
-    desc:
-      "중량물 운반과 분할 이전 노하우로 생산 차질을 최소화합니다. 지게차·사다리차 등 협업 장비 운용으로 효율적이고 안전한 이송이 가능합니다.",
+    desc: "중량물 운반과 분할 이전 노하우로 생산 차질을 최소화합니다. 지게차·사다리차 등 협업 장비 운용으로 효율적이고 안전한 이송이 가능합니다.",
     features: [
-      "중량물 · 정밀 장비 운반 전문",
-      "지게차 · 사다리차 협업 운용",
+      "중량물·정밀 장비 운반 전문",
+      "지게차·사다리차 협업 운용",
       "단계별 분할 이전 가능",
-      "재고 · 자재 분류 보관 지원",
+      "재고·자재 분류 보관 지원",
     ],
     image: IMG.warehouse,
   },
   {
-    no: "03",
-    eng: "Institutional",
-    kr: "법인 · 기관 이전",
-    intro: "병원 · 학원 · 관공서 등 기관 이전.",
-    desc:
-      "정해진 일정과 비용 안에서 진행하며, 보안이 요구되는 자료·물품에 대한 케어 프로세스를 적용합니다. 사후 정리까지 한 번에 마무리합니다.",
+    eng: "INSTITUTIONAL",
+    title: "법인 / 기관 이전",
+    intro: "병원·학원·관공서 등 기관 이전.",
+    desc: "정해진 일정과 비용 안에서 진행하며, 보안이 요구되는 자료·물품에 대한 케어 프로세스를 적용합니다. 사후 정리까지 한 번에 마무리합니다.",
     features: [
-      "정해진 일정 · 비용 준수",
-      "보안 자료 · 기밀 물품 케어",
+      "정해진 일정·비용 준수",
+      "보안 자료·기밀 물품 케어",
       "기관별 맞춤 동선 설계",
-      "사후 정리 · 배치 지원",
+      "사후 정리·배치 지원",
     ],
     image: IMG.hospital,
   },
 ];
 
 const CAPABILITIES = [
-  {
-    label: "Packing",
-    title: "포장재 자체 운용",
-    desc: "박스·완충재·전용 케이스를 자체 보유하여 즉시 작업이 가능합니다.",
-  },
-  {
-    label: "Vehicle",
-    title: "전용 차량",
-    desc: "1톤·2.5톤·5톤 등 작업 규모에 맞춘 차량을 직접 운용합니다.",
-  },
-  {
-    label: "Manpower",
-    title: "전문 인력",
-    desc: "기업이사 경험을 갖춘 한 팀이 처음부터 끝까지 작업합니다.",
-  },
-  {
-    label: "Equipment",
-    title: "협업 장비",
-    desc: "사다리차·지게차 등 작업 환경에 맞춰 추가 장비를 운용합니다.",
-  },
+  { label: "Packing", title: "포장재 자체 운용", desc: "박스·완충재·전용 케이스를 자체 보유하여 즉시 작업이 가능합니다." },
+  { label: "Vehicle", title: "전용 차량", desc: "1톤·2.5톤·5톤 등 작업 규모에 맞춘 차량을 직접 운용합니다." },
+  { label: "Manpower", title: "전문 인력", desc: "기업이사 경험을 갖춘 한 팀이 처음부터 끝까지 작업합니다." },
+  { label: "Equipment", title: "협업 장비", desc: "사다리차·지게차 등 작업 환경에 맞춰 추가 장비를 운용합니다." },
 ];
 
 export default function Services() {
@@ -78,80 +56,59 @@ export default function Services() {
       {/* Service detail list */}
       <section className="section bg-white">
         <div className="container-pad">
-          <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
-            <div className="lg:col-span-7">
-              <span className="eyebrow">Services</span>
-              <h2 className="mt-6 section-title-serif text-balance">
-                기업이사 전 영역, 한 팀이 책임집니다.
-              </h2>
-            </div>
-            <div className="lg:col-span-5 lg:text-right">
-              <p className="text-[15px] leading-[1.95] text-navy-600 max-w-md lg:ml-auto text-pretty">
-                (주)엘리트24는 기업·법인·사업장 이전만 진행하며, 가정이사는
-                진행하지 않습니다.
-              </p>
-            </div>
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="chip">Services</span>
+            <h2 className="mt-5 section-title text-balance">
+              기업이사 전 영역, 한 팀이 책임집니다
+            </h2>
+            <p className="section-sub text-pretty">
+              (주)엘리트24는 기업·법인·사업장 이전만 진행하며,
+              가정이사는 진행하지 않습니다.
+            </p>
           </div>
 
-          <div className="space-y-px">
+          <div className="space-y-12 lg:space-y-16">
             {SERVICES.map((s, i) => (
               <article
-                key={s.no}
-                className={`grid lg:grid-cols-12 gap-10 lg:gap-14 py-16 ${
-                  i !== 0 ? "border-t border-navy-100" : ""
+                key={s.title}
+                className={`grid lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
+                  i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
                 }`}
               >
-                <div className="lg:col-span-5">
-                  <div className="relative aspect-[4/3] overflow-hidden border border-navy-200/60 group">
-                    <img
-                      src={s.image}
-                      alt={s.kr}
-                      className="image-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-brand-navyDeep/40 to-transparent" />
-                    <div className="absolute top-5 left-5">
-                      <span className="font-serif text-3xl leading-[1] text-brand-goldLight">
-                        {s.no}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-5 right-5">
-                      <span className="text-[10px] leading-none tracking-eyebrow uppercase text-white/85">
-                        {s.eng}
-                      </span>
-                    </div>
+                <div className="lg:col-span-6">
+                  <div className="relative aspect-[5/4] rounded-3xl overflow-hidden">
+                    <img src={s.image} alt={s.title} className="image-cover" />
                   </div>
                 </div>
-
-                <div className="lg:col-span-7 lg:pl-4">
-                  <div className="text-[10px] leading-none tracking-eyebrow uppercase text-navy-400 font-semibold">
-                    Service {s.no}
+                <div className="lg:col-span-6">
+                  <div className="text-[12px] tracking-wider2 uppercase text-brand-orange font-bold">
+                    {s.eng}
                   </div>
-                  <h3 className="mt-4 font-serif text-3xl sm:text-4xl leading-[1.2] font-medium text-brand-navy text-balance">
-                    {s.kr}
+                  <h3 className="mt-3 text-[24px] sm:text-3xl leading-[1.3] font-bold text-brand-navy text-balance">
+                    {s.title}
                   </h3>
-                  <p className="mt-4 text-base leading-[1.7] text-brand-gold/90 font-medium">
+                  <p className="mt-3 text-[15px] leading-[1.7] text-brand-orangeDark font-semibold">
                     {s.intro}
                   </p>
-                  <span className="block mt-6 w-12 h-px bg-brand-gold" />
-                  <p className="mt-7 text-[15.5px] leading-[2] text-navy-700 text-pretty">
+                  <p className="mt-4 text-[15px] leading-[1.85] text-navy-700 text-pretty">
                     {s.desc}
                   </p>
-                  <ul className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                  <ul className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-3">
                     {s.features.map((f) => (
                       <li
                         key={f}
-                        className="flex items-start gap-3 text-[14.5px] leading-[1.6] text-navy-700"
+                        className="flex items-start gap-2 text-[14px] leading-[1.6] text-navy-700"
                       >
-                        <span className="mt-2 w-1.5 h-1.5 bg-brand-gold shrink-0" />
-                        {f}
+                        <CheckIcon />
+                        <span>{f}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-10 flex flex-wrap gap-3">
+                  <div className="mt-7 flex flex-wrap gap-3">
                     <Link href="/pricing" className="btn-outline">
                       견적 안내 <ArrowIcon />
                     </Link>
-                    <Link href="/contact" className="btn-outline">
+                    <Link href="/contact" className="btn-primary">
                       상담 문의 <ArrowIcon />
                     </Link>
                   </div>
@@ -163,63 +120,61 @@ export default function Services() {
       </section>
 
       {/* Capabilities */}
-      <section className="relative section bg-cream overflow-hidden">
+      <section className="section bg-navy-50/40">
         <div className="container-pad">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="eyebrow">Capabilities</span>
-            <h2 className="mt-6 section-title-serif text-balance">
-              전 과정에 필요한 자원을 자체적으로 운용합니다.
+            <span className="chip">Capabilities</span>
+            <h2 className="mt-5 section-title text-balance">
+              필요한 자원을 자체 운용합니다
             </h2>
           </div>
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-navy-100/60 border border-navy-100/60">
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {CAPABILITIES.map((c) => (
-              <div key={c.label} className="bg-white p-8 lg:p-10">
-                <div className="text-[10px] leading-none tracking-eyebrow uppercase text-brand-gold font-semibold">
+              <div
+                key={c.label}
+                className="bg-white rounded-2xl p-6 shadow-card hover:shadow-cardHover transition"
+              >
+                <div className="text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
                   {c.label}
                 </div>
-                <h3 className="mt-6 text-xl leading-[1.3] font-bold text-brand-navy">
+                <h3 className="mt-4 text-[17px] font-bold text-brand-navy">
                   {c.title}
                 </h3>
-                <span className="block mt-4 w-8 h-px bg-brand-gold" />
-                <p className="mt-5 text-[14px] leading-[1.85] text-navy-600 text-pretty">
+                <p className="mt-2 text-[13.5px] leading-[1.8] text-navy-600 text-pretty">
                   {c.desc}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-16 grid lg:grid-cols-2 gap-3">
-            <div className="relative aspect-[16/10] overflow-hidden border border-navy-200/60">
+          <div className="mt-10 grid lg:grid-cols-2 gap-4">
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden">
               <img src={IMG.truck} alt="" className="image-cover" />
               <div className="absolute inset-0 photo-veil-soft" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <div className="text-[10px] leading-none tracking-eyebrow uppercase text-brand-goldLight font-semibold">
+              <div className="absolute bottom-5 left-5 right-5 text-white">
+                <div className="text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
                   Logistics
                 </div>
-                <div className="mt-3 font-serif text-2xl leading-[1.2]">
-                  자체 차량 운용
-                </div>
+                <div className="mt-2 text-xl font-bold">자체 차량 운용</div>
               </div>
             </div>
-            <div className="relative aspect-[16/10] overflow-hidden border border-navy-200/60">
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden">
               <img src={IMG.industry} alt="" className="image-cover" />
               <div className="absolute inset-0 photo-veil-soft" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <div className="text-[10px] leading-none tracking-eyebrow uppercase text-brand-goldLight font-semibold">
+              <div className="absolute bottom-5 left-5 right-5 text-white">
+                <div className="text-[11px] tracking-wider2 uppercase text-brand-orange font-bold">
                   Field Work
                 </div>
-                <div className="mt-3 font-serif text-2xl leading-[1.2]">
-                  현장 책임 작업
-                </div>
+                <div className="mt-2 text-xl font-bold">현장 책임 작업</div>
               </div>
             </div>
           </div>
 
-          <div className="mt-12 border border-amber-200/70 bg-white px-6 sm:px-8 py-6 flex flex-col sm:flex-row sm:items-center gap-4">
-            <div className="w-11 h-11 shrink-0 bg-brand-gold/15 text-brand-goldDark flex items-center justify-center">
+          <div className="mt-10 rounded-2xl border border-amber-200 bg-brand-orangeSoft px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="w-10 h-10 shrink-0 rounded-full bg-brand-orange text-white flex items-center justify-center">
               <InfoIcon />
             </div>
-            <p className="text-sm leading-[1.85] text-navy-700 flex-1 text-pretty">
+            <p className="text-[14px] leading-[1.7] text-navy-800 flex-1 text-pretty">
               <strong className="text-brand-navy">안내사항.</strong> 가정이사
               문의는 정중히 사양드립니다. 저희는 기업·법인·사업장 이전 전문
               이사짐센터입니다.
@@ -231,28 +186,24 @@ export default function Services() {
   );
 }
 
+function CheckIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-brand-orange shrink-0 mt-0.5">
+      <path d="M5 12.5L10 17.5L19 7.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 function ArrowIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M5 12h14m0 0l-6-6m6 6l-6 6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
+      <path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 function InfoIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M12 8v.01M12 11v5M12 22a10 10 0 100-20 10 10 0 000 20z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path d="M12 8v.01M12 11v5M12 22a10 10 0 100-20 10 10 0 000 20z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
