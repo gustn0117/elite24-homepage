@@ -49,7 +49,6 @@ h4 {
   .eyebrow {
     @apply inline-flex items-center gap-2 text-[12px] leading-none font-bold uppercase tracking-wider2 text-brand-orange;
   }
-
   .eyebrow::before {
     content: "";
     @apply block w-5 h-0.5 bg-brand-orange;
@@ -72,19 +71,19 @@ h4 {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-orangeDark hover:-translate-y-0.5 shadow-[0_10px_24px_-12px_rgba(245,166,35,0.6)];
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand-orange px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-orangeDark hover:-translate-y-0.5 shadow-[0_10px_24px_-12px_rgba(245,166,35,0.6)];
   }
 
   .btn-navy {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-navyDeep hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-navyDeep hover:-translate-y-0.5;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-navy-200 bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:border-brand-orange hover:text-brand-orange;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-navy-200 bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:border-brand-orange hover:text-brand-orange;
   }
 
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20;
   }
 
   .chip {
@@ -92,7 +91,7 @@ h4 {
   }
 
   .input {
-    @apply w-full rounded-xl border border-navy-200 bg-white px-4 py-3.5 text-[15px] leading-normal text-navy-900 outline-none transition placeholder:text-navy-300 focus:border-brand-orange focus:shadow-[0_0_0_3px_rgba(245,166,35,0.15)];
+    @apply w-full rounded-lg border border-navy-200 bg-white px-4 py-3.5 text-[15px] leading-normal text-navy-900 outline-none transition placeholder:text-navy-300 focus:border-brand-orange focus:shadow-[0_0_0_3px_rgba(245,166,35,0.15)];
   }
 
   .label {
