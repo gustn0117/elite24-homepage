@@ -6,9 +6,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap");
 
 :root {
-  --brand-navy: #0f1d3a;
-  --brand-gold: #c9a45c;
-  --brand-orange: #f5a623;
+  --c-navy: #0f1d3a;
+  --c-navy-deep: #070f24;
+  --c-gold: #c9a45c;
+  --c-gold-light: #e2c690;
 }
 
 html {
@@ -21,11 +22,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "ss01", "ss02";
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 ::selection {
   background: rgba(201, 164, 92, 0.35);
   color: #0f1d3a;
+}
+
+/* Tailwind utilities ship their own line-height. Force tighter leading on
+   display headings so spacing reads premium regardless of utility order. */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.2 !important;
+  word-break: keep-all;
 }
 
 @layer components {
@@ -46,33 +59,30 @@ body {
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-3 text-[11px] sm:text-xs font-semibold uppercase tracking-eyebrow text-brand-gold;
+    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-eyebrow text-brand-gold;
   }
-
   .eyebrow::before {
     content: "";
     @apply block w-8 h-px bg-brand-gold;
   }
-
   .eyebrow-light {
-    @apply inline-flex items-center gap-3 text-[11px] sm:text-xs font-semibold uppercase tracking-eyebrow text-brand-goldLight;
+    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-eyebrow text-brand-goldLight;
   }
-
   .eyebrow-light::before {
     content: "";
     @apply block w-8 h-px bg-brand-goldLight;
   }
 
   .section-title {
-    @apply text-3xl sm:text-4xl lg:text-[44px] font-semibold tracking-tight text-brand-navy leading-[1.2];
+    @apply text-3xl sm:text-4xl lg:text-[44px] leading-[1.2] font-semibold tracking-tight text-brand-navy;
   }
 
   .section-title-serif {
-    @apply font-serif text-4xl sm:text-5xl lg:text-[56px] font-medium tracking-tight text-brand-navy leading-[1.15];
+    @apply font-serif text-[34px] sm:text-5xl lg:text-[56px] leading-[1.15] font-medium tracking-tight text-brand-navy;
   }
 
   .section-sub {
-    @apply mt-5 text-base sm:text-lg text-navy-600 leading-[1.85];
+    @apply mt-6 text-[15px] sm:text-base lg:text-lg leading-[1.95] text-navy-600;
   }
 
   .gold-line {
@@ -80,35 +90,27 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-none bg-brand-navy px-8 py-4 text-sm font-semibold tracking-wider2 uppercase text-white transition hover:bg-brand-navyDeep relative overflow-hidden;
+    @apply inline-flex items-center justify-center gap-3 rounded-none bg-brand-navy px-8 py-4 text-[12px] leading-none font-semibold tracking-wider2 uppercase text-white transition hover:bg-brand-navyDeep;
   }
 
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 rounded-none bg-brand-gold px-8 py-4 text-sm font-semibold tracking-wider2 uppercase text-white transition hover:bg-brand-goldDark;
+    @apply inline-flex items-center justify-center gap-3 rounded-none bg-brand-gold px-8 py-4 text-[12px] leading-none font-semibold tracking-wider2 uppercase text-white transition hover:bg-brand-goldDark;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-none border border-brand-navy/20 bg-transparent px-8 py-4 text-sm font-semibold tracking-wider2 uppercase text-brand-navy transition hover:border-brand-navy hover:bg-brand-navy hover:text-white;
+    @apply inline-flex items-center justify-center gap-3 rounded-none border border-brand-navy/25 bg-transparent px-8 py-4 text-[12px] leading-none font-semibold tracking-wider2 uppercase text-brand-navy transition hover:border-brand-navy hover:bg-brand-navy hover:text-white;
   }
 
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-none border border-white/25 bg-white/5 px-8 py-4 text-sm font-semibold tracking-wider2 uppercase text-white backdrop-blur transition hover:bg-white/15;
-  }
-
-  .card {
-    @apply relative bg-white border border-navy-100/70 p-7 sm:p-9 transition;
-  }
-
-  .card-hover {
-    @apply hover:-translate-y-1 hover:border-brand-gold/50 hover:shadow-soft;
+    @apply inline-flex items-center justify-center gap-3 rounded-none border border-white/30 bg-white/5 px-8 py-4 text-[12px] leading-none font-semibold tracking-wider2 uppercase text-white backdrop-blur transition hover:bg-white/15;
   }
 
   .input {
-    @apply w-full border border-navy-200/60 bg-white px-4 py-3.5 text-[15px] text-navy-900 outline-none transition placeholder:text-navy-300 focus:border-brand-gold focus:shadow-[0_0_0_3px_rgba(201,164,92,0.12)];
+    @apply w-full border border-navy-200/60 bg-white px-4 py-3.5 text-[15px] leading-normal text-navy-900 outline-none transition placeholder:text-navy-300 focus:border-brand-gold focus:shadow-[0_0_0_3px_rgba(201,164,92,0.12)];
   }
 
   .label {
-    @apply block text-[11px] font-semibold uppercase tracking-wider2 text-navy-500 mb-2;
+    @apply block text-[11px] leading-none font-semibold uppercase tracking-wider2 text-navy-500 mb-2;
   }
 
   .divider-soft {
@@ -134,5 +136,40 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  .image-cover {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
+  .photo-veil {
+    background-image: linear-gradient(
+      180deg,
+      rgba(7, 15, 36, 0.4) 0%,
+      rgba(7, 15, 36, 0.78) 60%,
+      rgba(7, 15, 36, 0.92) 100%
+    );
+  }
+  .photo-veil-soft {
+    background-image: linear-gradient(
+      180deg,
+      rgba(7, 15, 36, 0.25) 0%,
+      rgba(7, 15, 36, 0.55) 100%
+    );
+  }
+  .photo-veil-side {
+    background-image: linear-gradient(
+      90deg,
+      rgba(7, 15, 36, 0.85) 0%,
+      rgba(7, 15, 36, 0.55) 50%,
+      rgba(7, 15, 36, 0.25) 100%
+    );
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
   }
 }
