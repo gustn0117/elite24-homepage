@@ -3,66 +3,48 @@ import { IMG } from "@/lib/images";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-brand-navy text-white">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-bright-mesh">
       <img
         src={IMG.building}
         alt=""
         aria-hidden
-        className="image-cover opacity-45"
+        className="image-cover opacity-25"
       />
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, rgba(15,29,58,0.85) 0%, rgba(15,29,58,0.75) 60%, rgba(29,53,87,0.7) 100%)",
-        }}
-      />
+      <div className="absolute inset-0 photo-veil-bright" />
 
-      {/* 도면 그리드 — 미세 */}
+      {/* 부드러운 도면 격자 */}
       <svg
         viewBox="0 0 1200 800"
-        className="hidden md:block absolute inset-0 w-full h-full opacity-[0.16] pointer-events-none"
+        className="hidden md:block absolute inset-0 w-full h-full opacity-[0.10] pointer-events-none"
         fill="none"
         aria-hidden
       >
         {Array.from({ length: 25 }).map((_, i) => (
-          <line
-            key={`v${i}`}
-            x1={i * 50}
-            y1="0"
-            x2={i * 50}
-            y2="800"
-            stroke="#fff"
-            strokeWidth="0.5"
-          />
+          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="800" stroke="#1d3557" strokeWidth="0.5" />
         ))}
         {Array.from({ length: 17 }).map((_, i) => (
-          <line
-            key={`h${i}`}
-            x1="0"
-            y1={i * 50}
-            x2="1200"
-            y2={i * 50}
-            stroke="#fff"
-            strokeWidth="0.5"
-          />
+          <line key={`h${i}`} x1="0" y1={i * 50} x2="1200" y2={i * 50} stroke="#1d3557" strokeWidth="0.5" />
         ))}
       </svg>
 
+      {/* 배경 글로우 */}
+      <div className="absolute -top-32 -left-32 w-[420px] h-[420px] rounded-full bg-brand-orange/15 blur-[110px] animate-pulse-soft pointer-events-none" />
+      <div className="absolute -bottom-40 right-10 w-[460px] h-[460px] rounded-full bg-sky-200/40 blur-[110px] animate-float-slow pointer-events-none" />
+
       <div className="container-pad relative z-10 pt-32 pb-24 sm:pt-40 sm:pb-28 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur border border-white/20 px-3.5 py-1.5 text-[12px] font-semibold text-white animate-fade-up">
+        <span className="inline-flex items-center gap-2 rounded-full bg-white shadow-soft border border-navy-100 px-4 py-1.5 text-[12px] font-semibold text-brand-navy animate-fade-up">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-blink" />
           기업이사 전문 · (주)엘리트24
         </span>
 
-        <h1 className="mt-7 text-[36px] sm:text-5xl lg:text-[64px] leading-[1.18] font-extrabold tracking-tight text-balance animate-fade-up max-w-4xl mx-auto">
+        <h1 className="mt-7 text-[36px] sm:text-5xl lg:text-[64px] leading-[1.18] font-extrabold tracking-tight text-balance animate-fade-up max-w-4xl mx-auto text-brand-navy">
           사무실 · 공장 이전,
           <br />
           <span className="text-brand-orange">엘리트가 책임집니다.</span>
         </h1>
 
         <p
-          className="mt-6 max-w-2xl mx-auto text-[15px] sm:text-lg leading-[1.85] text-white/80 text-pretty animate-fade-up"
+          className="mt-6 max-w-2xl mx-auto text-[15px] sm:text-lg leading-[1.85] text-navy-600 text-pretty animate-fade-up"
           style={{ animationDelay: "0.08s" }}
         >
           (주)엘리트24는 사무실·공장·창고 등 기업 이전을 전문으로 합니다.
@@ -77,12 +59,12 @@ export default function Hero() {
           <Link href="/contact" className="btn-primary">
             무료 견적 받기 <ArrowIcon />
           </Link>
-          <a href="tel:01039566618" className="btn-ghost-light">
+          <a href="tel:01039566618" className="btn-outline">
             <PhoneIcon /> 010-3956-6618
           </a>
         </div>
 
-        <div className="mt-16 grid grid-cols-3 gap-px bg-white/15 max-w-2xl mx-auto rounded-2xl overflow-hidden border border-white/15">
+        <div className="mt-16 grid grid-cols-3 gap-3 max-w-2xl mx-auto">
           {[
             { v: "100%", l: "기업이사 전문" },
             { v: "30만원~", l: "1톤 기본 단가" },
@@ -90,13 +72,13 @@ export default function Hero() {
           ].map((s, i) => (
             <div
               key={s.l}
-              className="bg-brand-navy/70 backdrop-blur px-5 py-5 sm:px-6 sm:py-6 animate-fade-up"
+              className="bg-white rounded-2xl border border-navy-100 px-5 py-5 sm:px-6 sm:py-6 shadow-soft animate-fade-up"
               style={{ animationDelay: `${0.2 + i * 0.06}s` }}
             >
               <div className="text-lg sm:text-2xl font-extrabold text-brand-orange">
                 {s.v}
               </div>
-              <div className="mt-1.5 text-[11px] sm:text-[12px] leading-[1.5] text-white/70 font-semibold">
+              <div className="mt-1.5 text-[11px] sm:text-[12px] leading-[1.5] text-navy-600 font-semibold">
                 {s.l}
               </div>
             </div>
@@ -104,9 +86,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-white/55 z-10">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-navy-400 z-10">
         <span className="text-[10px] tracking-wider2 uppercase">Scroll</span>
-        <span className="block w-px h-7 bg-white/40" />
+        <span className="block w-px h-7 bg-navy-300" />
       </div>
     </section>
   );

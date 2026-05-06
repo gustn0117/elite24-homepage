@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const NAV = [
   { href: "/about", label: "회사소개" },
   { href: "/services", label: "서비스" },
+  { href: "/portfolio", label: "작업사례" },
   { href: "/pricing", label: "견적안내" },
   { href: "/process", label: "이사절차" },
   { href: "/contact", label: "문의하기" },
@@ -15,7 +16,6 @@ const NAV = [
 
 export default function Header() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -28,20 +28,18 @@ export default function Header() {
 
   useEffect(() => setOpen(false), [pathname]);
 
-  const transparent = isHome && !scrolled;
-
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        transparent
-          ? "bg-transparent"
-          : "bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(15,29,58,0.06)]"
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(15,29,58,0.06)]"
+          : "bg-white/70 backdrop-blur-sm"
       }`}
     >
       <div className="container-pad flex items-center justify-between h-16 sm:h-[72px]">
         <Link href="/" className="flex items-center gap-2" aria-label="(주)엘리트24 홈">
           <Image
-            src={transparent ? "/logo-white.png" : "/logo.png"}
+            src="/logo.png"
             alt="(주)엘리트24"
             width={150}
             height={40}
@@ -57,28 +55,20 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative px-4 py-2 text-[14px] font-semibold transition ${
-                  transparent
-                    ? "text-white/90 hover:text-white"
-                    : active
-                      ? "text-brand-navy"
-                      : "text-navy-700 hover:text-brand-navy"
+                className={`relative px-3.5 py-2 text-[14px] font-semibold transition ${
+                  active ? "text-brand-orange" : "text-navy-700 hover:text-brand-navy"
                 }`}
               >
                 {item.label}
-                {active && !transparent && (
-                  <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-5 h-0.5 bg-brand-orange" />
+                {active && (
+                  <span className="absolute left-1/2 -translate-x-1/2 -bottom-0.5 w-5 h-0.5 bg-brand-orange rounded-full" />
                 )}
               </Link>
             );
           })}
           <a
             href="tel:01039566618"
-            className={`ml-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition ${
-              transparent
-                ? "bg-white text-brand-navy hover:bg-brand-orange hover:text-white"
-                : "bg-brand-orange text-white hover:bg-brand-orangeDark"
-            }`}
+            className="ml-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition bg-brand-orange text-white hover:bg-brand-orangeDark hover:-translate-y-0.5 shadow-glow"
           >
             <PhoneIcon /> 010-3956-6618
           </a>
@@ -87,7 +77,7 @@ export default function Header() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="메뉴"
-          className={`lg:hidden p-2 ${transparent ? "text-white" : "text-navy-800"}`}
+          className="lg:hidden p-2 text-navy-800"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             {open ? (
@@ -142,7 +132,6 @@ function PhoneIcon() {
     </svg>
   );
 }
-
 function ArrowIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">

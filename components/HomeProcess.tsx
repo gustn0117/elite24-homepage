@@ -9,7 +9,7 @@ const STEPS = [
 
 export default function HomeProcess() {
   return (
-    <section className="section bg-navy-50/40 relative overflow-hidden">
+    <section className="section bg-gradient-to-b from-white to-sky-50/40 relative overflow-hidden">
       <svg
         viewBox="0 0 1200 200"
         className="hidden lg:block absolute top-44 inset-x-0 w-full h-[120px] pointer-events-none"
@@ -19,7 +19,7 @@ export default function HomeProcess() {
         <path
           d="M150 80 C 350 -10, 500 170, 700 70 S 1000 130, 1050 60"
           stroke="#f5a623"
-          strokeWidth="1.5"
+          strokeWidth="2"
           strokeDasharray="6 8"
           opacity="0.4"
           strokeLinecap="round"
@@ -42,7 +42,7 @@ export default function HomeProcess() {
           {STEPS.map((s, i) => (
             <div
               key={s.no}
-              className="relative bg-white rounded-2xl p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 transition border border-navy-100/50 animate-fade-up"
+              className="relative bg-white rounded-2xl p-7 shadow-soft hover:shadow-cardHover hover:-translate-y-1 transition border border-navy-100/60 animate-fade-up"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               <div className="relative w-12 h-12">

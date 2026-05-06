@@ -12,6 +12,7 @@ const SERVICES = [
     desc: "본사·지사·사무실 전체 이전. IT 장비, OA가구, 서류 보관함까지 안전 포장으로 이송합니다.",
     points: ["IT 장비 안전 포장", "주말·야간 작업 가능", "원스톱 진행"],
     Illus: OfficeIllustration,
+    bg: "from-amber-50 to-white",
   },
   {
     eng: "FACTORY",
@@ -19,6 +20,7 @@ const SERVICES = [
     desc: "생산 라인, 자재, 재고를 무중단으로 이전. 중량물 작업 노하우로 안전 이송합니다.",
     points: ["중량물 운반 전문", "지게차·사다리차 협업", "단계별 분할 이전"],
     Illus: FactoryIllustration,
+    bg: "from-sky-50 to-white",
   },
   {
     eng: "INSTITUTION",
@@ -26,6 +28,7 @@ const SERVICES = [
     desc: "병원, 학원, 관공서 등 기관 이전을 정해진 일정과 비용 안에서 책임지고 진행합니다.",
     points: ["일정 준수", "보안 자료 케어", "사후 정리 지원"],
     Illus: InstitutionIllustration,
+    bg: "from-emerald-50 to-white",
   },
 ];
 
@@ -49,12 +52,12 @@ export default function HomeServices() {
             <Link
               key={s.title}
               href="/services"
-              className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-cardHover hover:-translate-y-1 transition-all duration-300 animate-fade-up"
+              className="group bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-cardHover hover:-translate-y-1 transition-all duration-300 animate-fade-up border border-navy-100/60"
               style={{ animationDelay: `${i * 0.08}s` }}
             >
-              <div className="relative aspect-[5/3] overflow-hidden bg-gradient-to-br from-navy-50 to-white">
+              <div className={`relative aspect-[5/3] overflow-hidden bg-gradient-to-br ${s.bg}`}>
                 <s.Illus className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105" />
-                <span className="absolute top-4 left-4 chip bg-white shadow-sm">
+                <span className="absolute top-4 left-4 chip bg-white shadow-soft">
                   {s.eng}
                 </span>
               </div>

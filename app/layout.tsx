@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AIChat from "@/components/AIChat";
+import MusicPlayer from "@/components/MusicPlayer";
 
 const SITE_URL = "https://elite24-homepage.hsweb.pics";
 const DESCRIPTION =
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0f1d3a",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -55,6 +56,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <AIChat />
+        <MusicPlayer />
       </body>
     </html>
   );

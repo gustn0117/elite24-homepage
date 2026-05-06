@@ -6,16 +6,22 @@ const PILLARS = [
     title: "기업이사 전문성",
     desc: "사무실·공장·창고 이전 등 까다로운 작업 환경에 최적화된 전문 인력과 장비를 운용합니다.",
     icon: TargetIcon,
+    bg: "bg-amber-50",
+    iconBg: "bg-brand-orange/15 text-brand-orangeDark",
   },
   {
     title: "투명한 견적 정책",
     desc: "현장 조사 후 산정된 명확한 견적을 제공하며, 추가 비용은 사전에 모두 안내드립니다.",
     icon: DocIcon,
+    bg: "bg-sky-50",
+    iconBg: "bg-sky-100 text-sky-700",
   },
   {
     title: "원팀 책임 작업",
     desc: "포장·운반·정리까지 한 팀이 일관되게 진행하여 책임 소재를 분명하게 합니다.",
     icon: ShieldIcon,
+    bg: "bg-emerald-50",
+    iconBg: "bg-emerald-100 text-emerald-700",
   },
 ];
 
@@ -34,7 +40,7 @@ export default function HomeIntro() {
               기업 환경에서 요구되는 정확성·안전성·책임감을 가장 중요한 가치로 삼습니다.
             </p>
 
-            <div className="mt-8 relative aspect-[5/4] rounded-2xl overflow-hidden bg-navy-50/70 border border-navy-100">
+            <div className="mt-8 relative aspect-[5/4] rounded-2xl overflow-hidden bg-gradient-to-br from-sky-50 to-amber-50 border border-navy-100">
               <OfficeIllustration className="absolute inset-0 w-full h-full" />
             </div>
 
@@ -52,10 +58,10 @@ export default function HomeIntro() {
             {PILLARS.map((p, i) => (
               <div
                 key={p.title}
-                className="rounded-2xl bg-navy-50/60 p-7 hover:bg-white hover:shadow-card transition border border-transparent hover:border-navy-100 animate-fade-up"
+                className={`rounded-2xl ${p.bg} p-7 hover:shadow-card hover:-translate-y-1 transition border border-transparent hover:border-navy-100 animate-fade-up`}
                 style={{ animationDelay: `${i * 0.08}s` }}
               >
-                <div className="w-11 h-11 rounded-xl bg-brand-orange/15 text-brand-orangeDark flex items-center justify-center">
+                <div className={`w-11 h-11 rounded-xl ${p.iconBg} flex items-center justify-center`}>
                   <p.icon />
                 </div>
                 <h3 className="mt-5 text-[18px] font-bold text-brand-navy">
@@ -66,23 +72,26 @@ export default function HomeIntro() {
                 </p>
               </div>
             ))}
-            <div className="rounded-2xl bg-brand-navy text-white p-7 sm:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-5 relative overflow-hidden">
+            <div className="rounded-2xl bg-gradient-to-br from-brand-orange to-brand-orangeDark text-white p-7 sm:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-5 relative overflow-hidden shadow-glow">
               <div
-                className="absolute -right-20 -bottom-20 w-56 h-56 rounded-full bg-brand-orange/20 blur-3xl animate-pulse-soft"
+                className="absolute -right-20 -bottom-20 w-56 h-56 rounded-full bg-white/15 blur-3xl animate-pulse-soft"
                 aria-hidden
               />
               <div className="relative">
-                <div className="text-[12px] tracking-wider2 uppercase text-brand-orange font-bold">
+                <div className="text-[12px] tracking-wider2 uppercase text-white/85 font-bold">
                   Direct Care
                 </div>
                 <h3 className="mt-2 text-xl font-bold">
                   대표가 직접 상담하고 책임집니다.
                 </h3>
-                <p className="mt-2 text-[14px] leading-[1.7] text-white/70 max-w-md">
+                <p className="mt-2 text-[14px] leading-[1.7] text-white/85 max-w-md">
                   결정과 책임이 한 곳에서 이루어지므로 작업 품질이 일정합니다.
                 </p>
               </div>
-              <a href="tel:01039566618" className="btn-primary shrink-0 relative">
+              <a
+                href="tel:01039566618"
+                className="relative inline-flex items-center justify-center gap-2 rounded-full bg-white text-brand-orangeDark px-6 py-3.5 text-sm font-bold shrink-0 hover:bg-amber-50 hover:-translate-y-0.5 transition"
+              >
                 <PhoneIcon /> 010-3956-6618
               </a>
             </div>
