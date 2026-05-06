@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AIChat from "@/components/AIChat";
 
 const SITE_URL = "https://elite24-homepage.hsweb.pics";
 const DESCRIPTION =
@@ -53,6 +54,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <AIChat />
       </body>
     </html>
   );
