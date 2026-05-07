@@ -3,33 +3,30 @@ import { IMG } from "@/lib/images";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-bright-mesh">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-white">
+      {/* 빌딩 배경 — 크게, 밝게 */}
       <img
         src={IMG.building}
         alt=""
         aria-hidden
-        className="image-cover opacity-25"
+        className="image-cover"
       />
-      <div className="absolute inset-0 photo-veil-bright" />
-
-      {/* 부드러운 도면 격자 */}
-      <svg
-        viewBox="0 0 1200 800"
-        className="hidden md:block absolute inset-0 w-full h-full opacity-[0.10] pointer-events-none"
-        fill="none"
-        aria-hidden
-      >
-        {Array.from({ length: 25 }).map((_, i) => (
-          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="800" stroke="#1d3557" strokeWidth="0.5" />
-        ))}
-        {Array.from({ length: 17 }).map((_, i) => (
-          <line key={`h${i}`} x1="0" y1={i * 50} x2="1200" y2={i * 50} stroke="#1d3557" strokeWidth="0.5" />
-        ))}
-      </svg>
-
-      {/* 배경 글로우 */}
-      <div className="absolute -top-32 -left-32 w-[420px] h-[420px] rounded-full bg-brand-orange/15 blur-[110px] animate-pulse-soft pointer-events-none" />
-      <div className="absolute -bottom-40 right-10 w-[460px] h-[460px] rounded-full bg-sky-200/40 blur-[110px] animate-float-slow pointer-events-none" />
+      {/* 밝은 화이트 베일 — 빌딩이 보이되 텍스트 가독성 확보 */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.55) 35%, rgba(255,255,255,0.92) 100%)",
+        }}
+      />
+      {/* 우측에 컬러 글로우 */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 85% 15%, rgba(245,166,35,0.18) 0%, transparent 45%), radial-gradient(circle at 15% 85%, rgba(186,230,253,0.4) 0%, transparent 50%)",
+        }}
+      />
 
       <div className="container-pad relative z-10 pt-32 pb-24 sm:pt-40 sm:pb-28 text-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-white shadow-soft border border-navy-100 px-4 py-1.5 text-[12px] font-semibold text-brand-navy animate-fade-up">
@@ -37,14 +34,14 @@ export default function Hero() {
           기업이사 전문 · (주)엘리트24
         </span>
 
-        <h1 className="mt-7 text-[36px] sm:text-5xl lg:text-[64px] leading-[1.18] font-extrabold tracking-tight text-balance animate-fade-up max-w-4xl mx-auto text-brand-navy">
+        <h1 className="mt-7 text-[36px] sm:text-5xl lg:text-[64px] leading-[1.18] font-extrabold tracking-tight text-balance animate-fade-up max-w-4xl mx-auto text-brand-navy drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
           사무실 · 공장 이전,
           <br />
           <span className="text-brand-orange">엘리트가 책임집니다.</span>
         </h1>
 
         <p
-          className="mt-6 max-w-2xl mx-auto text-[15px] sm:text-lg leading-[1.85] text-navy-600 text-pretty animate-fade-up"
+          className="mt-6 max-w-2xl mx-auto text-[15px] sm:text-lg leading-[1.85] text-navy-700 text-pretty animate-fade-up font-medium"
           style={{ animationDelay: "0.08s" }}
         >
           (주)엘리트24는 사무실·공장·창고 등 기업 이전을 전문으로 합니다.
@@ -72,7 +69,7 @@ export default function Hero() {
           ].map((s, i) => (
             <div
               key={s.l}
-              className="bg-white rounded-2xl border border-navy-100 px-5 py-5 sm:px-6 sm:py-6 shadow-soft animate-fade-up"
+              className="bg-white/90 backdrop-blur-sm rounded-2xl border border-navy-100 px-5 py-5 sm:px-6 sm:py-6 shadow-card animate-fade-up"
               style={{ animationDelay: `${0.2 + i * 0.06}s` }}
             >
               <div className="text-lg sm:text-2xl font-extrabold text-brand-orange">
@@ -86,9 +83,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-navy-400 z-10">
-        <span className="text-[10px] tracking-wider2 uppercase">Scroll</span>
-        <span className="block w-px h-7 bg-navy-300" />
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-navy-500 z-10">
+        <span className="text-[10px] tracking-wider2 uppercase font-semibold">Scroll</span>
+        <span className="block w-px h-7 bg-navy-400" />
       </div>
     </section>
   );
