@@ -66,8 +66,7 @@ export default function Services() {
               기업이사 전 영역, 한 팀이 책임집니다
             </h2>
             <p className="section-sub text-pretty">
-              (주)엘리트24는 기업·법인·사업장 이전만 진행하며,
-              가정이사는 진행하지 않습니다.
+              정직하고 투명한 가격, 양심적인 작업으로 사무실·공장·창고 이전 전 영역을 책임집니다.
             </p>
           </div>
 
@@ -160,9 +159,12 @@ export default function Services() {
               <InfoIcon />
             </div>
             <p className="text-[14px] leading-[1.7] text-navy-800 flex-1 text-pretty">
-              <strong className="text-brand-navy">안내사항.</strong> 가정이사
-              문의는 정중히 사양드립니다. 저희는 기업·법인·사업장 이전 전문
-              이사짐센터입니다.
+              <strong className="text-brand-navy">엘리트24의 약속.</strong>{" "}
+              현장 조사 후 산정된 견적 그대로,{" "}
+              <strong className="text-brand-orangeDark">
+                추가 비용 없이 정직하고 양심적으로 작업
+              </strong>
+              합니다.
             </p>
           </div>
         </div>

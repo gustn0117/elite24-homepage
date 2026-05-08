@@ -81,7 +81,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-navy-200 flex flex-col sm:flex-row justify-between gap-3 text-[12px] text-navy-500">
           <span>© {new Date().getFullYear()} {c.companyName}. All rights reserved.</span>
-          <span>기업이사 전문 · 가정이사 미진행</span>
+          <span>기업이사 전문 · 정직한 견적 · 양심 작업</span>
         </div>
       </div>
     </footer>

@@ -39,8 +39,8 @@ export default function HomeServices() {
             기업이사 전 영역, 한 팀이 책임집니다
           </h2>
           <p className="section-sub text-pretty">
-            (주)엘리트24는 <strong className="text-brand-navy">기업이사만</strong>{" "}
-            전문으로 합니다. 가정이사는 진행하지 않으며, 오직 법인·사업장 이전에 집중합니다.
+            <strong className="text-brand-navy">정직하고 투명한 가격</strong>으로,
+            기업 환경에 최적화된 사무실·공장·창고 이전을 양심적으로 진행합니다.
           </p>
         </div>
 
@@ -86,14 +86,15 @@ export default function HomeServices() {
 
         <div className="mt-10 rounded-2xl border border-amber-200 bg-brand-orangeSoft px-5 sm:px-7 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
           <div className="w-10 h-10 shrink-0 rounded-full bg-brand-orange text-white flex items-center justify-center">
-            <InfoIcon />
+            <CheckCircleIcon />
           </div>
           <p className="text-[14px] leading-[1.7] text-navy-800 flex-1 text-pretty">
-            <strong className="text-brand-navy">안내사항.</strong> (주)엘리트24는
-            기업·법인·사업장 이전만 진행하며,{" "}
+            <strong className="text-brand-navy">약속드린 견적 그대로.</strong>{" "}
+            추가 비용 없이{" "}
             <strong className="text-brand-orangeDark">
-              가정이사는 진행하지 않습니다.
+              정직하고 투명한 가격, 양심적인 작업
             </strong>
+            을 약속드립니다.
           </p>
         </div>
       </div>
@@ -115,10 +116,11 @@ function ArrowIcon() {
     </svg>
   );
 }
-function InfoIcon() {
+function CheckCircleIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <path d="M12 8v.01M12 11v5M12 22a10 10 0 100-20 10 10 0 000 20z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+      <path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

@@ -8,7 +8,7 @@ import { useSiteConfig } from "@/components/SiteConfigProvider";
 const VALUES = [
   {
     title: "기업이사 전문성",
-    desc: "법인·사업장 이전 경험을 바탕으로 까다로운 작업 환경에 가장 최적화된 솔루션을 제공합니다. 가정이사는 진행하지 않으며 오직 기업이사에 집중합니다.",
+    desc: "법인·사업장 이전 경험을 바탕으로 까다로운 작업 환경에 가장 최적화된 솔루션을 제공합니다. 풍부한 현장 경험으로 가장 효율적인 진행 방식을 제안드립니다.",
     icon: TargetIcon,
   },
   {
@@ -47,12 +47,12 @@ export default function About() {
             </h2>
             <p className="mt-5 text-[16px] leading-[1.95] text-navy-700 text-pretty">
               {c.companyName}는 사무실·공장·창고 등 기업 이전을 전문으로 하는
-              이사짐센터입니다. 기업이라는 단위가 가지는{" "}
+              이사짐센터입니다. 기업이라는 단위가 요구하는{" "}
               <strong className="text-brand-navy">정확한 일정</strong>,{" "}
-              <strong className="text-brand-navy">분명한 비용 산정</strong>,{" "}
+              <strong className="text-brand-navy">정직하고 투명한 가격</strong>,{" "}
               <strong className="text-brand-navy">민감한 자산 보호</strong>를
-              모두 충족시키기 위해 가정이사는 진행하지 않고 오직 기업이사에만
-              집중합니다.
+              모두 지키기 위해 약속드린 견적 그대로, 양심적인 작업으로
+              일해왔습니다.
             </p>
             <p className="mt-4 text-[15px] leading-[1.95] text-navy-600 text-pretty">
               포장재·차량·인력을 자체 운용하며, 대표가 상담과 작업 현장을 직접

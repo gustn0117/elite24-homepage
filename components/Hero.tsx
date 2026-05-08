@@ -16,7 +16,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.55) 35%, rgba(255,255,255,0.92) 100%)",
+            "linear-gradient(180deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.50) 35%, rgba(255,255,255,0.95) 100%)",
         }}
       />
       {/* 우측에 컬러 글로우 */}
