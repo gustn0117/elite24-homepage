@@ -1,14 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useSiteConfig } from "@/components/SiteConfigProvider";
 
 type Msg = { role: "user" | "assistant"; content: string };
-
-const WELCOME: Msg = {
-  role: "assistant",
-  content:
-    "안녕하세요! (주)엘리트24 AI 상담사입니다.\n사무실·공장·창고 이전 관련 무엇이든 편하게 물어봐 주세요.",
-};
 
 const QUICK_REPLIES = [
   "견적 안내해주세요",
@@ -17,11 +12,19 @@ const QUICK_REPLIES = [
 ];
 
 export default function AIChat() {
+  const config = useSiteConfig();
+  const welcome = useMemo<Msg>(
+    () => ({
+      role: "assistant",
+      content: `안녕하세요! ${config.companyName} AI 상담사입니다.\n사무실·공장·창고 이전 관련 무엇이든 편하게 물어봐 주세요.`,
+    }),
+    [config.companyName],
+  );
   const [open, setOpen] = useState(false);
   const [hasNew, setHasNew] = useState(true);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
-  const [messages, setMessages] = useState<Msg[]>([WELCOME]);
+  const [messages, setMessages] = useState<Msg[]>([welcome]);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -65,7 +68,7 @@ export default function AIChat() {
           ...next,
           {
             role: "assistant",
-            content: `${errMsg}\n\n전화로 바로 상담받으시려면 010-3956-6618로 연락 주세요.`,
+            content: `${errMsg}\n\n전화로 바로 상담받으시려면 ${config.phonePrimary}로 연락 주세요.`,
           },
         ]);
         return;
@@ -89,7 +92,7 @@ export default function AIChat() {
         ...next,
         {
           role: "assistant",
-          content: `죄송합니다. 연결에 문제가 발생했습니다 (${msg}).\n010-3956-6618로 직접 전화 주시면 빠르게 안내드리겠습니다.`,
+          content: `죄송합니다. 연결에 문제가 발생했습니다 (${msg}).\n${config.phonePrimary}로 직접 전화 주시면 빠르게 안내드리겠습니다.`,
         },
       ]);
     } finally {
@@ -240,10 +243,10 @@ export default function AIChat() {
           <div className="text-[10px] text-center text-navy-400 py-1.5 bg-white border-t border-navy-100">
             AI 답변은 참고용입니다 · 정확한 견적은{" "}
             <a
-              href="tel:01039566618"
+              href={`tel:${config.phonePrimary.replace(/[^0-9+]/g, "")}`}
               className="text-brand-orange font-bold hover:underline"
             >
-              010-3956-6618
+              {config.phonePrimary}
             </a>
           </div>
         </div>

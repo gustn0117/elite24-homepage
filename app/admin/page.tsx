@@ -1,8 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import SiteInfoEditor from "@/components/SiteInfoEditor";
 
 type MediaType = "images" | "videos" | "music";
+type Tab = MediaType | "info";
 
 type Item = { name: string; size: number; modified: number; url: string };
 
@@ -13,7 +15,7 @@ export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
   const [pwInput, setPwInput] = useState("");
   const [pwError, setPwError] = useState("");
-  const [tab, setTab] = useState<MediaType>("images");
+  const [tab, setTab] = useState<Tab>("info");
   const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploads, setUploads] = useState<{ name: string; pct: number; err?: string }[]>([]);
@@ -45,7 +47,7 @@ export default function AdminPage() {
   );
 
   useEffect(() => {
-    if (authed) load(tab);
+    if (authed && tab !== "info") load(tab);
   }, [authed, tab, load]);
 
   async function tryLogin(e: React.FormEvent) {
@@ -133,11 +135,12 @@ export default function AdminPage() {
         );
       }
     }
-    await load(tab);
+    if (tab !== "info") await load(tab);
     setTimeout(() => setUploads([]), 3000);
   }
 
   async function del(name: string) {
+    if (tab === "info") return;
     if (!confirm(`"${name}" 삭제할까요?`)) return;
     const res = await fetch("/api/admin/delete", {
       method: "POST",
@@ -214,9 +217,10 @@ export default function AdminPage() {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6">
           {(
             [
+              { k: "info", l: "사이트 정보", icon: "⚙️" },
               { k: "images", l: "사진", icon: "🖼️" },
               { k: "videos", l: "영상", icon: "🎬" },
               { k: "music", l: "음악", icon: "🎵" },
@@ -237,7 +241,12 @@ export default function AdminPage() {
           ))}
         </div>
 
-        {/* Drop zone */}
+        {/* Site info editor */}
+        {tab === "info" && <SiteInfoEditor password={pw} />}
+
+        {/* Drop zone (media tabs only) */}
+        {tab !== "info" && (
+        <>
         <div
           onDragOver={(e) => {
             e.preventDefault();
@@ -394,6 +403,8 @@ export default function AdminPage() {
             </div>
           )}
         </div>
+        </>
+        )}
       </div>
     </main>
   );

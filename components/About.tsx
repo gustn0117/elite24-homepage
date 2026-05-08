@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { QuoteIllustration } from "@/components/Illustrations";
 import { IMG } from "@/lib/images";
+import { useSiteConfig } from "@/components/SiteConfigProvider";
 
 const VALUES = [
   {
@@ -20,17 +23,18 @@ const VALUES = [
   },
 ];
 
-const COMPANY_INFO = [
-  { label: "상호", value: "(주)엘리트24" },
-  { label: "대표", value: "황필성" },
-  { label: "전문 분야", value: "기업이사 (사무실·공장·창고 이전)" },
-  { label: "주소", value: "서울 금천구 독산로 106길 15" },
-  { label: "대표 전화", value: "010-3956-6618" },
-  { label: "사무실", value: "02-6958-8067" },
-  { label: "이메일", value: "pirseng0825@naver.com" },
-];
-
 export default function About() {
+  const c = useSiteConfig();
+  const COMPANY_INFO = [
+    { label: "상호", value: c.companyName },
+    { label: "대표", value: c.representativeName },
+    { label: "전문 분야", value: "기업이사 (사무실·공장·창고 이전)" },
+    { label: "주소", value: c.address },
+    { label: c.phonePrimaryLabel, value: c.phonePrimary },
+    { label: c.phoneSecondaryLabel, value: c.phoneSecondary },
+    { label: "이메일", value: c.email },
+  ];
+
   return (
     <>
       {/* Brand statement */}
@@ -42,7 +46,7 @@ export default function About() {
               기업의 이전, 한 곳에 책임을 둡니다
             </h2>
             <p className="mt-5 text-[16px] leading-[1.95] text-navy-700 text-pretty">
-              (주)엘리트24는 사무실·공장·창고 등 기업 이전을 전문으로 하는
+              {c.companyName}는 사무실·공장·창고 등 기업 이전을 전문으로 하는
               이사짐센터입니다. 기업이라는 단위가 가지는{" "}
               <strong className="text-brand-navy">정확한 일정</strong>,{" "}
               <strong className="text-brand-navy">분명한 비용 산정</strong>,{" "}
@@ -136,7 +140,7 @@ export default function About() {
               </h2>
               <div className="mt-6 max-w-2xl">
                 <p className="text-[15.5px] leading-[1.95] text-white/90 text-pretty">
-                  저희 (주)엘리트24를 찾아주신 모든 기업 고객 여러분께 진심으로
+                  저희 {c.companyName}를 찾아주신 모든 기업 고객 여러분께 진심으로
                   감사드립니다. 사무실·공장·창고 이전 현장에서 쌓아온 경험을 바탕으로,
                   기업 고객이 가장 중요하게 여기는{" "}
                   <strong className="text-brand-orange">시간·비용·자산의 안전</strong>을
@@ -151,7 +155,7 @@ export default function About() {
               <div className="mt-7 inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur border border-white/25 px-5 py-3">
                 <div className="text-[11px] tracking-wider2 uppercase font-bold text-brand-orange">CEO</div>
                 <span className="w-px h-4 bg-white/40" />
-                <div className="text-[15px] font-bold">대표 황필성</div>
+                <div className="text-[15px] font-bold">대표 {c.representativeName}</div>
               </div>
             </div>
           </div>
@@ -166,18 +170,18 @@ export default function About() {
             <h2 className="mt-5 section-title text-balance">사업자 정보</h2>
           </div>
           <ul className="rounded-2xl bg-white border border-navy-100 overflow-hidden max-w-3xl mx-auto shadow-soft">
-            {COMPANY_INFO.map((c, i) => (
+            {COMPANY_INFO.map((row, i) => (
               <li
-                key={c.label}
+                key={`${row.label}-${i}`}
                 className={`grid grid-cols-12 gap-4 px-6 sm:px-8 py-4 text-[15px] ${
                   i !== COMPANY_INFO.length - 1 ? "border-b border-navy-100" : ""
                 }`}
               >
                 <div className="col-span-4 sm:col-span-3 text-[12px] leading-[1.6] tracking-wider2 uppercase text-brand-orange font-bold pt-1">
-                  {c.label}
+                  {row.label}
                 </div>
                 <div className="col-span-8 sm:col-span-9 text-navy-800 font-medium">
-                  {c.value}
+                  {row.value}
                 </div>
               </li>
             ))}

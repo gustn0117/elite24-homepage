@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { OfficeIllustration } from "@/components/Illustrations";
+import { useSiteConfig } from "@/components/SiteConfigProvider";
+import { phoneHref } from "@/lib/site-config";
 
 const PILLARS = [
   {
@@ -20,6 +24,7 @@ const PILLARS = [
 ];
 
 export default function HomeIntro() {
+  const c = useSiteConfig();
   return (
     <section className="section bg-white">
       <div className="container-pad">
@@ -30,7 +35,7 @@ export default function HomeIntro() {
               기업의 신뢰가 머무는 이사짐센터
             </h2>
             <p className="section-sub max-w-md text-pretty">
-              저희 (주)엘리트24는 법인·사업장 이전을 전문으로 하는 이사짐센터입니다.
+              저희 {c.companyName}는 법인·사업장 이전을 전문으로 하는 이사짐센터입니다.
               기업 환경에서 요구되는 정확성·안전성·책임감을 가장 중요한 가치로 삼습니다.
             </p>
 
@@ -83,10 +88,10 @@ export default function HomeIntro() {
                 </p>
               </div>
               <a
-                href="tel:01039566618"
+                href={phoneHref(c.phonePrimary)}
                 className="relative inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange text-white px-6 py-3.5 text-sm font-bold shrink-0 hover:bg-brand-orangeDark hover:-translate-y-0.5 transition shadow-glow"
               >
-                <PhoneIcon /> 010-3956-6618
+                <PhoneIcon /> {c.phonePrimary}
               </a>
             </div>
           </div>

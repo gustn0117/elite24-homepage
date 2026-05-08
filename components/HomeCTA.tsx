@@ -1,12 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { IMG } from "@/lib/images";
+import { useSiteConfig } from "@/components/SiteConfigProvider";
+import { phoneHref } from "@/lib/site-config";
 
 export default function HomeCTA() {
+  const c = useSiteConfig();
   return (
     <section className="section-tight bg-white">
       <div className="container-pad">
         <div className="relative overflow-hidden rounded-3xl bg-brand-navy text-white border border-navy-100">
-          {/* 빌딩 배경 */}
           <img
             src={IMG.buildingTall}
             alt=""
@@ -31,21 +35,21 @@ export default function HomeCTA() {
                 기업이사, 지금 견적부터 받아보세요
               </h2>
               <p className="mt-4 text-[15px] sm:text-base leading-[1.85] text-white/80 max-w-xl text-pretty">
-                평일·주말·야간 상담 모두 가능합니다. 전화·이메일·온라인 양식 어디로
+                {c.businessHours}. 전화·이메일·온라인 양식 어디로
                 연락 주시든 빠르게 답변드리겠습니다.
               </p>
             </div>
 
             <div className="lg:col-span-5 flex flex-col gap-3">
               <a
-                href="tel:01039566618"
+                href={phoneHref(c.phonePrimary)}
                 className="flex items-center justify-between gap-4 rounded-2xl bg-brand-orange text-white px-6 py-5 hover:bg-brand-orangeDark hover:-translate-y-0.5 transition shadow-glow"
               >
                 <div>
                   <div className="text-[11px] tracking-wider2 uppercase font-bold opacity-90">
-                    Direct Call
+                    {c.phonePrimaryLabel}
                   </div>
-                  <div className="mt-1 text-xl font-extrabold">010-3956-6618</div>
+                  <div className="mt-1 text-xl font-extrabold">{c.phonePrimary}</div>
                 </div>
                 <ArrowIcon />
               </a>

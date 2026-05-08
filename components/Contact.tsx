@@ -1,16 +1,11 @@
 "use client";
 
 import { useState } from "react";
-
-const CONTACT = [
-  { label: "대표 연락처", value: "010-3956-6618", href: "tel:01039566618", icon: PhoneIcon },
-  { label: "사무실", value: "02-6958-8067", href: "tel:0269588067", icon: OfficeIcon },
-  { label: "이메일", value: "pirseng0825@naver.com", href: "mailto:pirseng0825@naver.com", icon: MailIcon },
-  { label: "주소", value: "서울 금천구 독산로 106길 15", icon: MapIcon },
-  { label: "대표", value: "황필성", icon: UserIcon },
-];
+import { useSiteConfig } from "@/components/SiteConfigProvider";
+import { emailHref, phoneHref } from "@/lib/site-config";
 
 export default function Contact() {
+  const c = useSiteConfig();
   const [form, setForm] = useState({
     company: "",
     name: "",
@@ -34,13 +29,21 @@ export default function Contact() {
         `■ 희망 일정: ${form.date}\n\n` +
         `■ 추가 사항\n${form.message}\n`,
     );
-    window.location.href = `mailto:pirseng0825@naver.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${c.email}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  const CONTACT_ROWS: { label: string; value: string; href?: string; Icon: () => React.ReactElement }[] = [
+    { label: c.phonePrimaryLabel, value: c.phonePrimary, href: phoneHref(c.phonePrimary), Icon: OfficeIcon },
+    { label: c.phoneSecondaryLabel, value: c.phoneSecondary, href: phoneHref(c.phoneSecondary), Icon: PhoneIcon },
+    { label: "이메일", value: c.email, href: emailHref(c.email), Icon: MailIcon },
+    { label: "주소", value: c.address, Icon: MapIcon },
+    { label: "대표", value: c.representativeName, Icon: UserIcon },
+  ];
 
   return (
     <section className="section bg-white">
@@ -51,8 +54,7 @@ export default function Contact() {
             기업이사 상담, 지금 시작하세요
           </h2>
           <p className="section-sub text-pretty">
-            평일·주말 모두 상담 가능합니다. 전화·이메일·온라인 양식 어디로 연락
-            주시든 가장 빠른 채널로 답변드립니다.
+            {c.businessHours}. 전화·이메일·온라인 양식 어디로 연락 주시든 가장 빠른 채널로 답변드립니다.
           </p>
         </div>
 
@@ -67,29 +69,29 @@ export default function Contact() {
               <span className="chip bg-brand-orange text-white">Contact</span>
               <h3 className="mt-4 text-xl font-bold">연락처 안내</h3>
               <p className="mt-2 text-[13px] leading-[1.7] text-white/65 text-pretty">
-                상담은 평일·주말 모두 가능합니다.
+                {c.businessHours}
               </p>
 
               <ul className="mt-7 space-y-4">
-                {CONTACT.map((c) => {
+                {CONTACT_ROWS.map((row) => {
                   const content = (
                     <>
                       <div className="w-10 h-10 rounded-xl bg-white/10 text-brand-orange flex items-center justify-center shrink-0">
-                        <c.icon />
+                        <row.Icon />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[11px] text-white/55 font-semibold">{c.label}</div>
+                        <div className="text-[11px] text-white/55 font-semibold">{row.label}</div>
                         <div className="mt-0.5 text-[14px] sm:text-[15px] leading-[1.4] font-bold truncate">
-                          {c.value}
+                          {row.value}
                         </div>
                       </div>
                     </>
                   );
                   return (
-                    <li key={c.label}>
-                      {c.href ? (
+                    <li key={row.label}>
+                      {row.href ? (
                         <a
-                          href={c.href}
+                          href={row.href}
                           className="flex items-center gap-3 hover:text-brand-orange transition"
                         >
                           {content}
@@ -103,7 +105,7 @@ export default function Contact() {
               </ul>
 
               <a
-                href="tel:01039566618"
+                href={phoneHref(c.phonePrimary)}
                 className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-orange text-white px-5 py-3.5 text-sm font-bold hover:bg-brand-orangeDark transition"
               >
                 <PhoneIcon /> 지금 바로 전화 상담
@@ -123,7 +125,7 @@ export default function Contact() {
 
             <div className="mt-6 grid sm:grid-cols-2 gap-4">
               <Field label="회사명" required>
-                <input name="company" required value={form.company} onChange={onChange} className="input" placeholder="(주)엘리트" />
+                <input name="company" required value={form.company} onChange={onChange} className="input" placeholder={c.companyName} />
               </Field>
               <Field label="담당자명" required>
                 <input name="name" required value={form.name} onChange={onChange} className="input" placeholder="홍길동" />
@@ -160,14 +162,14 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange text-white px-5 py-4 text-sm font-bold hover:bg-brand-orangeDark transition shadow-[0_10px_24px_-12px_rgba(245,166,35,0.6)]"
+              className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange text-white px-5 py-4 text-sm font-bold hover:bg-brand-orangeDark transition shadow-glow"
             >
               견적 요청 보내기 <ArrowIcon />
             </button>
 
             {submitted && (
               <p className="mt-3 text-center text-xs text-brand-orangeDark">
-                메일 앱이 열리지 않으면 pirseng0825@naver.com 으로 직접 보내주세요.
+                메일 앱이 열리지 않으면 {c.email} 으로 직접 보내주세요.
               </p>
             )}
           </form>

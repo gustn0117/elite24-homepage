@@ -4,6 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AIChat from "@/components/AIChat";
 import MusicPlayer from "@/components/MusicPlayer";
+import SiteConfigProvider from "@/components/SiteConfigProvider";
+import { getSiteConfig } from "@/lib/site-config-server";
 
 const SITE_URL = "https://elite24-homepage.hsweb.pics";
 const DESCRIPTION =
@@ -49,14 +51,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const config = getSiteConfig();
   return (
     <html lang="ko">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <AIChat />
-        <MusicPlayer />
+        <SiteConfigProvider config={config}>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <AIChat />
+          <MusicPlayer />
+        </SiteConfigProvider>
       </body>
     </html>
   );

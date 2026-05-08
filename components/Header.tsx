@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSiteConfig } from "@/components/SiteConfigProvider";
+import { phoneHref } from "@/lib/site-config";
 
 const NAV = [
   { href: "/about", label: "회사소개" },
@@ -16,6 +18,7 @@ const NAV = [
 
 export default function Header() {
   const pathname = usePathname();
+  const config = useSiteConfig();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -37,10 +40,10 @@ export default function Header() {
       }`}
     >
       <div className="container-pad flex items-center justify-between h-16 sm:h-[72px]">
-        <Link href="/" className="flex items-center gap-2" aria-label="(주)엘리트24 홈">
+        <Link href="/" className="flex items-center gap-2" aria-label={`${config.companyName} 홈`}>
           <Image
             src="/logo.png"
-            alt="(주)엘리트24"
+            alt={config.companyName}
             width={150}
             height={40}
             priority
@@ -67,10 +70,10 @@ export default function Header() {
             );
           })}
           <a
-            href="tel:01039566618"
+            href={phoneHref(config.phonePrimary)}
             className="ml-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition bg-brand-orange text-white hover:bg-brand-orangeDark hover:-translate-y-0.5 shadow-glow"
           >
-            <PhoneIcon /> 010-3956-6618
+            <PhoneIcon /> {config.phonePrimary}
           </a>
         </nav>
 
@@ -108,10 +111,10 @@ export default function Header() {
               );
             })}
             <a
-              href="tel:01039566618"
+              href={phoneHref(config.phonePrimary)}
               className="mt-4 mb-2 inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange text-white px-5 py-3.5 text-sm font-bold"
             >
-              <PhoneIcon /> 010-3956-6618
+              <PhoneIcon /> {config.phonePrimary}
             </a>
           </nav>
         </div>
