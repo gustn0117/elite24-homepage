@@ -15,8 +15,11 @@ function buildSystemPrompt() {
 - 전문: 사무실·공장·창고 이전 (기업이사) 전문 이사짐센터
 - 핵심 가치: 정직하고 투명한 가격, 양심적인 작업, 약속한 견적 그대로
 - 주소: ${c.address}
-- ${c.phonePrimaryLabel}: ${c.phonePrimary}
-- ${c.phoneSecondaryLabel}: ${c.phoneSecondary}
+- ${c.phonePrimaryLabel || "전화"}: ${c.phonePrimary}${
+    c.phoneSecondary
+      ? `\n- ${c.phoneSecondaryLabel || "보조 연락처"}: ${c.phoneSecondary}`
+      : ""
+  }
 - 이메일: ${c.email}
 - 상담 가능: ${c.businessHours}
 

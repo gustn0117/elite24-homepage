@@ -78,13 +78,13 @@ export default function HomeIntro() {
               />
               <div className="relative">
                 <div className="text-[12px] tracking-wider2 uppercase text-brand-orange font-bold">
-                  Direct Care
+                  Honest Pricing
                 </div>
                 <h3 className="mt-2 text-xl font-bold">
-                  대표가 직접 상담하고 책임집니다.
+                  약속드린 견적 그대로 진행합니다.
                 </h3>
                 <p className="mt-2 text-[14px] leading-[1.7] text-white/80 max-w-md">
-                  결정과 책임이 한 곳에서 이루어지므로 작업 품질이 일정합니다.
+                  추가 비용 없이, 정직하고 양심적인 작업으로 책임집니다.
                 </p>
               </div>
               <a

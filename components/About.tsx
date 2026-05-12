@@ -17,8 +17,8 @@ const VALUES = [
     icon: DocIcon,
   },
   {
-    title: "책임 있는 작업",
-    desc: "포장부터 운반·정리까지 한 팀이 일관되게 진행합니다. 책임 소재가 분명하고, 대표가 직접 상담과 작업에 참여해 끝까지 챙깁니다.",
+    title: "양심적인 작업",
+    desc: "포장부터 운반·정리까지 한 팀이 일관되게 진행합니다. 책임 소재가 분명하고, 약속드린 일정과 견적 안에서 끝까지 책임집니다.",
     icon: ShieldIcon,
   },
 ];
@@ -31,7 +31,9 @@ export default function About() {
     { label: "전문 분야", value: "기업이사 (사무실·공장·창고 이전)" },
     { label: "주소", value: c.address },
     { label: c.phonePrimaryLabel, value: c.phonePrimary },
-    { label: c.phoneSecondaryLabel, value: c.phoneSecondary },
+    ...(c.phoneSecondary
+      ? [{ label: c.phoneSecondaryLabel || "보조 연락처", value: c.phoneSecondary }]
+      : []),
     { label: "이메일", value: c.email },
   ];
 
@@ -62,7 +64,7 @@ export default function About() {
             <div className="mt-8 grid sm:grid-cols-3 gap-3">
               {[
                 { v: "100%", l: "기업이사 전문" },
-                { v: "1ON1", l: "대표 직접 상담" },
+                { v: "투명", l: "정직한 견적" },
                 { v: "365일", l: "주말·야간 가능" },
               ].map((s) => (
                 <div key={s.l} className="rounded-2xl bg-white border border-navy-100 px-5 py-5 shadow-soft">

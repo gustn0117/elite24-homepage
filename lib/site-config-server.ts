@@ -2,7 +2,11 @@ import "server-only";
 
 import { promises as fsp, readFileSync } from "node:fs";
 import path from "node:path";
-import { DEFAULT_SITE_CONFIG, type SiteConfig } from "./site-config";
+import {
+  DEFAULT_SITE_CONFIG,
+  OPTIONAL_EMPTY_FIELDS,
+  type SiteConfig,
+} from "./site-config";
 
 const CONFIG_PATH =
   process.env.SITE_CONFIG_PATH ?? "/app/data/site-config.json";
@@ -44,7 +48,7 @@ function sanitize(raw: unknown): Partial<SiteConfig> {
     const v = r[k];
     if (typeof v === "string") {
       const trimmed = v.trim().slice(0, 200);
-      if (trimmed) out[k] = trimmed;
+      if (trimmed || OPTIONAL_EMPTY_FIELDS.includes(k)) out[k] = trimmed;
     }
   }
   return out;

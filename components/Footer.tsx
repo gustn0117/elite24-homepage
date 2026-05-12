@@ -59,10 +59,12 @@ export default function Footer() {
                 <span className="text-navy-500">{c.phonePrimaryLabel}</span>
                 <a href={phoneHref(c.phonePrimary)} className="text-brand-navy font-bold hover:text-brand-orange">{c.phonePrimary}</a>
               </li>
-              <li className="flex justify-between border-b border-navy-100 pb-3">
-                <span className="text-navy-500">{c.phoneSecondaryLabel}</span>
-                <a href={phoneHref(c.phoneSecondary)} className="text-brand-navy font-bold hover:text-brand-orange">{c.phoneSecondary}</a>
-              </li>
+              {c.phoneSecondary && (
+                <li className="flex justify-between border-b border-navy-100 pb-3">
+                  <span className="text-navy-500">{c.phoneSecondaryLabel || "보조 연락처"}</span>
+                  <a href={phoneHref(c.phoneSecondary)} className="text-brand-navy font-bold hover:text-brand-orange">{c.phoneSecondary}</a>
+                </li>
+              )}
               <li className="flex justify-between border-b border-navy-100 pb-3">
                 <span className="text-navy-500">이메일</span>
                 <a href={emailHref(c.email)} className="text-brand-navy font-bold hover:text-brand-orange text-[13px]">{c.email}</a>

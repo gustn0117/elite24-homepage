@@ -38,8 +38,10 @@ export default function Contact() {
   ) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   const CONTACT_ROWS: { label: string; value: string; href?: string; Icon: () => React.ReactElement }[] = [
-    { label: c.phonePrimaryLabel, value: c.phonePrimary, href: phoneHref(c.phonePrimary), Icon: OfficeIcon },
-    { label: c.phoneSecondaryLabel, value: c.phoneSecondary, href: phoneHref(c.phoneSecondary), Icon: PhoneIcon },
+    { label: c.phonePrimaryLabel || "전화", value: c.phonePrimary, href: phoneHref(c.phonePrimary), Icon: OfficeIcon },
+    ...(c.phoneSecondary
+      ? [{ label: c.phoneSecondaryLabel || "보조 연락처", value: c.phoneSecondary, href: phoneHref(c.phoneSecondary), Icon: PhoneIcon }]
+      : []),
     { label: "이메일", value: c.email, href: emailHref(c.email), Icon: MailIcon },
     { label: "주소", value: c.address, Icon: MapIcon },
     { label: "대표", value: c.representativeName, Icon: UserIcon },

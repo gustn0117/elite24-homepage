@@ -18,12 +18,18 @@ export const DEFAULT_SITE_CONFIG: SiteConfig = {
   representativeName: "황필성",
   phonePrimary: "02-6958-8067",
   phonePrimaryLabel: "사무실",
-  phoneSecondary: "010-3956-6618",
-  phoneSecondaryLabel: "대표",
-  email: "pirseng0825@naver.com",
-  address: "서울 금천구 독산로 106길 15",
+  phoneSecondary: "",
+  phoneSecondaryLabel: "",
+  email: "elite_24@naver.com",
+  address: "서울 금천구 독산로 106길 15 1층",
   businessHours: "평일·주말 24시간 상담",
 };
+
+// 비워둘 수 있는(선택) 필드 — 보조 연락처 등
+export const OPTIONAL_EMPTY_FIELDS: (keyof SiteConfig)[] = [
+  "phoneSecondary",
+  "phoneSecondaryLabel",
+];
 
 export function phoneHref(phone: string): string {
   return `tel:${phone.replace(/[^0-9+]/g, "")}`;
