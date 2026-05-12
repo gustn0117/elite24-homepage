@@ -69,7 +69,7 @@ export default function Hero() {
         <div className="mt-16 grid grid-cols-3 gap-3 max-w-2xl mx-auto">
           {[
             { v: "100%", l: "기업이사 전문" },
-            { v: "30만원~", l: "1톤 기본 단가" },
+            { v: "AI 상담", l: "24시간 즉시 응대" },
             { v: "당일 응대", l: "빠른 견적 회신" },
           ].map((s, i) => (
             <div
