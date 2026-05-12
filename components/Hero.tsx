@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { IMG } from "@/lib/images";
+import { useSiteConfig } from "@/components/SiteConfigProvider";
+import { phoneHref } from "@/lib/site-config";
 
 export default function Hero() {
+  const config = useSiteConfig();
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-white">
       {/* 빌딩 배경 — 크게, 밝게 */}
@@ -56,8 +61,8 @@ export default function Hero() {
           <Link href="/contact" className="btn-primary">
             무료 견적 받기 <ArrowIcon />
           </Link>
-          <a href="tel:01039566618" className="btn-outline">
-            <PhoneIcon /> 010-3956-6618
+          <a href={phoneHref(config.phonePrimary)} className="btn-outline">
+            <PhoneIcon /> {config.phonePrimary}
           </a>
         </div>
 
