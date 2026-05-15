@@ -15,7 +15,7 @@ export type SiteConfig = {
 
 export const DEFAULT_SITE_CONFIG: SiteConfig = {
   companyName: "(주)엘리트24",
-  representativeName: "황필성",
+  representativeName: "",
   phonePrimary: "02-6958-8067",
   phonePrimaryLabel: "사무실",
   phoneSecondary: "",
@@ -25,10 +25,11 @@ export const DEFAULT_SITE_CONFIG: SiteConfig = {
   businessHours: "평일·주말 24시간 상담",
 };
 
-// 비워둘 수 있는(선택) 필드 — 보조 연락처 등
+// 비워둘 수 있는(선택) 필드 — 보조 연락처, 대표자명 등
 export const OPTIONAL_EMPTY_FIELDS: (keyof SiteConfig)[] = [
   "phoneSecondary",
   "phoneSecondaryLabel",
+  "representativeName",
 ];
 
 export function phoneHref(phone: string): string {
