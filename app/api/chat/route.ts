@@ -11,7 +11,6 @@ function buildSystemPrompt() {
 
 [회사 정보]
 - 상호: ${c.companyName}
-- 대표: ${c.representativeName}
 - 전문: 사무실·공장·창고 이전 (기업이사) 전문 이사짐센터
 - 핵심 가치: 정직하고 투명한 가격, 양심적인 작업, 약속한 견적 그대로
 - 주소: ${c.address}

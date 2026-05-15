@@ -71,6 +71,7 @@ const config: Config = {
         "rise-delay": "rise 9s ease-in-out 1.5s infinite",
         "shimmer": "shimmer 2.6s linear infinite",
         "wave": "wave 1.6s ease-in-out infinite",
+        "ken-burns": "kenBurns 24s ease-in-out infinite alternate",
       },
       keyframes: {
         fadeUp: {
@@ -110,6 +111,10 @@ const config: Config = {
         wave: {
           "0%, 100%": { transform: "scaleY(0.4)" },
           "50%": { transform: "scaleY(1)" },
+        },
+        kenBurns: {
+          "0%":   { transform: "scale(1)    translate(0,    0)" },
+          "100%": { transform: "scale(1.12) translate(-1.5%, -1%)" },
         },
       },
     },

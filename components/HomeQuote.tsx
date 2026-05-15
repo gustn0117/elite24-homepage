@@ -23,14 +23,6 @@ export default function HomeQuote() {
             저희의 원칙입니다.
           </p>
 
-          <div className="mt-7 inline-flex items-center gap-3 rounded-full bg-brand-orangeSoft border border-amber-200 px-5 py-3">
-            <div className="text-[11px] tracking-wider2 uppercase font-bold text-brand-orangeDark">
-              CEO
-            </div>
-            <span className="w-px h-4 bg-amber-300" />
-            <div className="text-[15px] font-bold text-brand-navy">대표 황필성</div>
-          </div>
-
           <div className="mt-8">
             <Link href="/about" className="btn-outline">
               회사 소개 자세히 보기 <ArrowIcon />

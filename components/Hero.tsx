@@ -9,12 +9,12 @@ export default function Hero() {
   const config = useSiteConfig();
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-white">
-      {/* 빌딩 배경 — 크게, 밝게 */}
+      {/* 빌딩 배경 — 크게, 밝게, 천천히 줌 (Ken Burns) */}
       <img
         src={IMG.building}
         alt=""
         aria-hidden
-        className="image-cover"
+        className="image-cover origin-center will-change-transform animate-ken-burns motion-reduce:animate-none"
       />
       {/* 밝은 화이트 베일 — 빌딩이 보이되 텍스트 가독성 확보 */}
       <div

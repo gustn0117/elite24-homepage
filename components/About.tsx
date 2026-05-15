@@ -27,7 +27,6 @@ export default function About() {
   const c = useSiteConfig();
   const COMPANY_INFO = [
     { label: "상호", value: c.companyName },
-    { label: "대표", value: c.representativeName },
     { label: "전문 분야", value: "기업이사 (사무실·공장·창고 이전)" },
     { label: "주소", value: c.address },
     { label: c.phonePrimaryLabel, value: c.phonePrimary },
@@ -154,11 +153,6 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="mt-7 inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur border border-white/25 px-5 py-3">
-                <div className="text-[11px] tracking-wider2 uppercase font-bold text-brand-orange">CEO</div>
-                <span className="w-px h-4 bg-white/40" />
-                <div className="text-[15px] font-bold">대표 {c.representativeName}</div>
-              </div>
             </div>
           </div>
         </div>

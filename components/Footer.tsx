@@ -69,10 +69,6 @@ export default function Footer() {
                 <span className="text-navy-500">이메일</span>
                 <a href={emailHref(c.email)} className="text-brand-navy font-bold hover:text-brand-orange text-[13px]">{c.email}</a>
               </li>
-              <li className="flex justify-between border-b border-navy-100 pb-3">
-                <span className="text-navy-500">대표</span>
-                <span className="text-brand-navy font-bold">{c.representativeName}</span>
-              </li>
               <li className="flex justify-between">
                 <span className="text-navy-500">주소</span>
                 <span className="text-brand-navy font-bold text-right">{c.address}</span>

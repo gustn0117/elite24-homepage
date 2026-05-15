@@ -44,7 +44,6 @@ export default function Contact() {
       : []),
     { label: "이메일", value: c.email, href: emailHref(c.email), Icon: MailIcon },
     { label: "주소", value: c.address, Icon: MapIcon },
-    { label: "대표", value: c.representativeName, Icon: UserIcon },
   ];
 
   return (
@@ -225,13 +224,6 @@ function MapIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
       <path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13zM12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-    </svg>
-  );
-}
-function UserIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <path d="M16 11a4 4 0 11-8 0 4 4 0 018 0zM4 21a8 8 0 0116 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }
