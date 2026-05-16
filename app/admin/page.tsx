@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import SiteInfoEditor from "@/components/SiteInfoEditor";
 
-type MediaType = "images" | "videos" | "music";
+type MediaType = "images" | "videos" | "music" | "background";
 type Tab = MediaType | "info";
 
 type Item = { name: string; size: number; modified: number; url: string };
@@ -223,6 +223,7 @@ export default function AdminPage() {
               { k: "info", l: "사이트 정보", icon: "⚙️" },
               { k: "images", l: "사진", icon: "🖼️" },
               { k: "videos", l: "영상", icon: "🎬" },
+              { k: "background", l: "히어로 영상", icon: "☁️" },
               { k: "music", l: "음악", icon: "🎵" },
             ] as const
           ).map((t) => (
@@ -283,7 +284,7 @@ export default function AdminPage() {
             accept={
               tab === "images"
                 ? "image/*"
-                : tab === "videos"
+                : tab === "videos" || tab === "background"
                   ? "video/*"
                   : "audio/*"
             }
@@ -296,6 +297,7 @@ export default function AdminPage() {
           <p className="mt-3 text-[11px] text-navy-400">
             {tab === "images" && "JPG, PNG, GIF, WebP, SVG · 최대 15MB"}
             {tab === "videos" && "MP4, WebM, MOV · 최대 200MB"}
+            {tab === "background" && "MP4 · 최대 100MB · 메인 페이지 히어로 배경에 자동 재생 (한 개만 등록)"}
             {tab === "music" && "MP3, WAV, OGG, M4A · 최대 30MB"}
           </p>
         </div>
@@ -360,7 +362,7 @@ export default function AdminPage() {
                 </FileCard>
               ))}
             </div>
-          ) : tab === "videos" ? (
+          ) : tab === "videos" || tab === "background" ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {items.map((it) => (
                 <FileCard key={it.name} item={it} type={tab} onDelete={del}>
