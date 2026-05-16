@@ -16,7 +16,7 @@ export default function AIChat() {
   const welcome = useMemo<Msg>(
     () => ({
       role: "assistant",
-      content: `안녕하세요! ${config.companyName} AI 상담사입니다.\n사무실·공장·창고 이전 관련 무엇이든 편하게 물어봐 주세요.`,
+      content: `안녕하세요! ${config.companyName} 상담사입니다.\n사무실·공장·창고 이전 관련 무엇이든 편하게 물어봐 주세요.`,
     }),
     [config.companyName],
   );
@@ -112,7 +112,7 @@ export default function AIChat() {
       {/* Floating button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "AI 상담 닫기" : "AI 상담 열기"}
+        aria-label={open ? "상담 닫기" : "상담 열기"}
         className={`fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[60] flex items-center gap-2 transition-all duration-300 ${
           open
             ? "w-12 h-12 rounded-full bg-brand-navy text-white"
@@ -129,7 +129,7 @@ export default function AIChat() {
                 <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-500 border-2 border-brand-orange animate-pulse-soft" />
               )}
             </span>
-            <span className="text-sm font-bold">AI 상담</span>
+            <span className="text-sm font-bold">상담</span>
           </>
         )}
       </button>
@@ -154,7 +154,7 @@ export default function AIChat() {
             </div>
             <div className="relative flex-1 min-w-0">
               <div className="text-[15px] font-bold flex items-center gap-2">
-                엘리트24 AI 상담사
+                {config.companyName} 상담사
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-blink" />
               </div>
               <div className="text-[11px] text-white/65 mt-0.5">

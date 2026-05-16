@@ -112,7 +112,7 @@ export default function SiteInfoEditor({ password }: { password: string }) {
           <div>
             <h3 className="text-base font-bold text-brand-navy">사이트 정보</h3>
             <p className="mt-1 text-[12.5px] text-navy-500 leading-[1.6]">
-              여기서 수정한 값은 헤더·푸터·문의 페이지·AI 상담사·푸터 등 모든 곳에
+              여기서 수정한 값은 헤더·푸터·문의 페이지·상담 도우미 등 모든 곳에
               자동 반영됩니다.
             </p>
           </div>

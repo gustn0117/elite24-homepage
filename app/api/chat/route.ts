@@ -12,7 +12,7 @@ function buildSystemPrompt() {
       ? `\n- ${c.phoneSecondaryLabel || "보조 연락처"}: ${c.phoneSecondary}`
       : ""
   }`;
-  return `너는 ${c.companyName}의 공식 AI 상담사야. 사이트(${c.companyName} 홈페이지)의 모든 내용을 알고 있고, 방문자의 모든 질문에 친절하고 정확하게 답해.
+  return `너는 ${c.companyName}의 공식 상담 도우미야. 사이트(${c.companyName} 홈페이지)의 모든 내용을 알고 있고, 방문자의 모든 질문에 친절하고 정확하게 답해.
 
 ============================================================
 [회사 정보]
@@ -206,7 +206,7 @@ export async function POST(req: NextRequest) {
   if (!apiKey) {
     return Response.json(
       {
-        error: `AI 상담이 아직 활성화되지 않았습니다. ${fallbackPhone}로 직접 전화 주시면 빠르게 안내드리겠습니다.`,
+        error: `상담이 아직 활성화되지 않았습니다. ${fallbackPhone}로 직접 전화 주시면 빠르게 안내드리겠습니다.`,
       },
       { status: 503 },
     );
