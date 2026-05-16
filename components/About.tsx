@@ -56,7 +56,7 @@ export default function About() {
               일해왔습니다.
             </p>
             <p className="mt-4 text-[15px] leading-[1.95] text-navy-600 text-pretty">
-              포장재·차량·인력을 자체 운용하며, 대표가 상담과 작업 현장을 직접
+              포장재·차량·인력을 자체 운용하며, 대표가 작업 현장을 직접
               챙기기 때문에 결정과 책임이 한 곳에서 이루어집니다.
             </p>
 
