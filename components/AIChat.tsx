@@ -9,6 +9,7 @@ const QUICK_REPLIES = [
   "견적 안내해주세요",
   "이사 절차가 궁금해요",
   "주말 작업도 가능한가요?",
+  "이삿날 골라주세요",
 ];
 
 export default function AIChat() {
