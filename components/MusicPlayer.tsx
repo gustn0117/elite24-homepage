@@ -7,6 +7,7 @@ type Track = { name: string; url: string };
 const VOL_KEY = "elite24_bgm_vol";
 const TRACK_KEY = "elite24_bgm_track";
 const ENABLED_KEY = "elite24_bgm_enabled";
+const DISABLED_KEY = "elite24_bgm_disabled";
 
 export default function MusicPlayer() {
   const [tracks, setTracks] = useState<Track[]>([]);
@@ -40,17 +41,55 @@ export default function MusicPlayer() {
         const savedIdx = list.findIndex((t) => t.name === savedTrack);
         if (savedIdx >= 0) setIdx(savedIdx);
 
-        // 이전에 활성화한 적이 있으면 자동 재생 시도 (사용자 제스처 캐시 활용)
-        const wasEnabled = localStorage.getItem(ENABLED_KEY) === "1";
-        if (wasEnabled) {
-          // 자동재생은 브라우저 정책상 실패할 수 있음 — 그땐 그냥 패널만 펼침
-          setTimeout(() => {
-            void audioRef.current?.play().then(
-              () => setPlaying(true),
-              () => setOpen(true),
-            );
-          }, 300);
-        }
+        // 사용자가 명시적으로 "끄기"를 누른 적 있으면 자동재생 시도 안 함
+        const isDisabled = localStorage.getItem(DISABLED_KEY) === "1";
+        if (isDisabled) return;
+
+        // 1) 일단 바로 재생 시도 — 브라우저 정책에 따라 성공/실패 갈림
+        const attempt = () => {
+          if (!audioRef.current) return Promise.reject(new Error("no audio"));
+          return audioRef.current.play();
+        };
+
+        setTimeout(() => {
+          void attempt().then(
+            () => {
+              setPlaying(true);
+              localStorage.setItem(ENABLED_KEY, "1");
+            },
+            () => {
+              // 2) 차단됐으면 첫 사용자 제스처에 자동 재생
+              const onGesture = () => {
+                void attempt().then(
+                  () => {
+                    setPlaying(true);
+                    localStorage.setItem(ENABLED_KEY, "1");
+                  },
+                  () => {},
+                );
+                removeGestureListeners();
+              };
+              const events: (keyof DocumentEventMap)[] = [
+                "click",
+                "touchstart",
+                "keydown",
+                "scroll",
+                "pointerdown",
+              ];
+              const removeGestureListeners = () => {
+                for (const e of events) {
+                  document.removeEventListener(e, onGesture);
+                }
+              };
+              for (const e of events) {
+                document.addEventListener(e, onGesture, {
+                  once: true,
+                  passive: true,
+                });
+              }
+            },
+          );
+        }, 300);
       } catch {
         setHideUntilLoaded(true);
       }
@@ -75,6 +114,7 @@ export default function MusicPlayer() {
         await audio.play();
         setPlaying(true);
         localStorage.setItem(ENABLED_KEY, "1");
+        localStorage.removeItem(DISABLED_KEY);
       } catch {
         // autoplay denied
       }
@@ -104,6 +144,7 @@ export default function MusicPlayer() {
     audioRef.current?.pause();
     setPlaying(false);
     localStorage.removeItem(ENABLED_KEY);
+    localStorage.setItem(DISABLED_KEY, "1");
     setOpen(false);
   }
 
