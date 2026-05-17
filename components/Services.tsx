@@ -160,7 +160,7 @@ export default function Services() {
             </div>
             <p className="text-[14px] leading-[1.7] text-navy-800 flex-1 text-pretty">
               <strong className="text-brand-navy">엘리트24의 약속.</strong>{" "}
-              현장 조사 후 산정된 견적 그대로,{" "}
+              현장 조사 후 산정된 견적 그대로, 특이사항이 없는 한{" "}
               <strong className="text-brand-orangeDark">
                 추가 비용 없이 정직하고 양심적으로 작업
               </strong>

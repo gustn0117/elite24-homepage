@@ -90,7 +90,7 @@ export default function HomeServices() {
           </div>
           <p className="text-[14px] leading-[1.7] text-navy-800 flex-1 text-pretty">
             <strong className="text-brand-navy">약속드린 견적 그대로.</strong>{" "}
-            추가 비용 없이{" "}
+            현장에 특이사항이 없는 한 추가 비용 없이{" "}
             <strong className="text-brand-orangeDark">
               정직하고 투명한 가격, 양심적인 작업
             </strong>

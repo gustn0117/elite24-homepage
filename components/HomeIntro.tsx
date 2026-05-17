@@ -84,7 +84,7 @@ export default function HomeIntro() {
                   약속드린 견적 그대로 진행합니다.
                 </h3>
                 <p className="mt-2 text-[14px] leading-[1.7] text-white/80 max-w-md">
-                  추가 비용 없이, 정직하고 양심적인 작업으로 책임집니다.
+                  현장에 특이사항이 없는 한 추가 비용 없이, 정직하고 양심적인 작업으로 책임집니다.
                 </p>
               </div>
               <a
