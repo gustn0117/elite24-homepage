@@ -14,7 +14,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About Elite24"
         title="기업의 신뢰가 머무는 자리"
-        description="(주)엘리트24는 기업·법인·사업장 이전만 진행하는 전문 이사짐센터입니다. 정확한 일정, 분명한 비용, 안전한 자산 이송을 가장 중요한 가치로 삶습니다."
+        description="(주)엘리트24는 기업·법인·사업장 이전만 진행하는 전문 이사짐센터입니다. 정확한 일정, 분명한 비용, 안전한 자산 이송을 무엇보다 중요하게 여깁니다."
         current="회사소개"
       />
       <About />

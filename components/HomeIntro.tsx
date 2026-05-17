@@ -36,7 +36,7 @@ export default function HomeIntro() {
             </h2>
             <p className="section-sub max-w-md text-pretty">
               저희 {c.companyName}는 법인·사업장 이전을 전문으로 하는 이사짐센터입니다.
-              기업 환경에서 요구되는 정확성·안전성·책임감을 가장 중요한 가치로 삶습니다.
+              기업 환경에서 요구되는 정확성·안전성·책임감을 무엇보다 중요하게 여깁니다.
             </p>
 
             <div className="mt-8 relative aspect-[5/4] rounded-2xl overflow-hidden bg-navy-50 border border-navy-100">
