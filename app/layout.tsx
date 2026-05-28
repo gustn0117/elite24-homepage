@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     siteName: "(주)엘리트24",
   },
   robots: { index: true, follow: true },
+  verification: {
+    other: {
+      "naver-site-verification": "a4784315780c8f52a1cb0b751db1f4cab7e24270",
+    },
+  },
 };
 
 export const viewport: Viewport = {
