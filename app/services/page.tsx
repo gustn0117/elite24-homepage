@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "서비스",
   description:
     "사무실 이전, 공장·창고 이전, 법인·기관 이전 등 (주)엘리트24의 기업이사 전문 서비스를 안내드립니다.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    url: "/services",
+    title: "서비스 | (주)엘리트24",
+    description:
+      "사무실 이전, 공장·창고 이전, 법인·기관 이전 — 기업이사 전 영역 한 팀이 책임집니다.",
+  },
 };
 
 export default function ServicesPage() {

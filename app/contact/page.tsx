@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "문의하기",
   description:
     "(주)엘리트24 견적·상담 문의. 전화·이메일·온라인 양식으로 빠르게 연락드립니다.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    url: "/contact",
+    title: "문의하기 | (주)엘리트24",
+    description: "평일·주말 24시간 상담. 전화 02-6958-8067 또는 온라인 견적 양식.",
+  },
 };
 
 export default function ContactPage() {

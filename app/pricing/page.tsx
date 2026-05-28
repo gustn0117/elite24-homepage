@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "견적안내",
   description:
     "(주)엘리트24의 기업이사 견적 안내. 1톤당 단가 기준의 두 가지 패키지와 추가 작업, 견적 관련 자주 묻는 질문을 확인하세요.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    url: "/pricing",
+    title: "견적안내 | (주)엘리트24",
+    description:
+      "1톤 30만원부터. 사전포장·풀패키지 두 가지 옵션. 20km 이내 추가비용 없는 투명한 가격.",
+  },
 };
 
 export default function PricingPage() {
