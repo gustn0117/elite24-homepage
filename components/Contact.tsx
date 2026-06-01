@@ -9,10 +9,12 @@ export default function Contact() {
   const [form, setForm] = useState({
     company: "",
     name: "",
+    position: "",
     phone: "",
     email: "",
     type: "사무실 이전",
     date: "",
+    visitTime: "협의 가능",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -22,11 +24,12 @@ export default function Contact() {
     const subject = encodeURIComponent(`[견적문의] ${form.company || "기업"} - ${form.type}`);
     const body = encodeURIComponent(
       `■ 회사명: ${form.company}\n` +
-        `■ 담당자: ${form.name}\n` +
+        `■ 담당자: ${form.name}${form.position ? ` (${form.position})` : ""}\n` +
         `■ 연락처: ${form.phone}\n` +
         `■ 이메일: ${form.email}\n` +
         `■ 이전 유형: ${form.type}\n` +
-        `■ 희망 일정: ${form.date}\n\n` +
+        `■ 희망 일정: ${form.date}\n` +
+        `■ 사전 방문 희망 시간: ${form.visitTime}\n\n` +
         `■ 추가 사항\n${form.message}\n`,
     );
     window.location.href = `mailto:${c.email}?subject=${subject}&body=${body}`;
@@ -131,6 +134,9 @@ export default function Contact() {
               <Field label="담당자명" required>
                 <input name="name" required value={form.name} onChange={onChange} className="input" placeholder="홍길동" />
               </Field>
+              <Field label="직위">
+                <input name="position" value={form.position} onChange={onChange} className="input" placeholder="예: 대표 / 총무팀장 / 시설관리" />
+              </Field>
               <Field label="연락처" required>
                 <input name="phone" required type="tel" value={form.phone} onChange={onChange} className="input" placeholder="010-0000-0000" />
               </Field>
@@ -147,6 +153,17 @@ export default function Contact() {
               </Field>
               <Field label="희망 일정">
                 <input name="date" type="date" value={form.date} onChange={onChange} className="input" />
+              </Field>
+              <Field label="사전 방문 희망 시간대" className="sm:col-span-2">
+                <select name="visitTime" value={form.visitTime} onChange={onChange} className="input">
+                  <option>협의 가능</option>
+                  <option>오전 (09:00 ~ 12:00)</option>
+                  <option>점심 (12:00 ~ 13:30)</option>
+                  <option>오후 일찍 (13:30 ~ 15:30)</option>
+                  <option>오후 늦게 (15:30 ~ 18:00)</option>
+                  <option>퇴근 후 / 야간 (18:00 이후)</option>
+                  <option>주말 / 공휴일</option>
+                </select>
               </Field>
             </div>
 
