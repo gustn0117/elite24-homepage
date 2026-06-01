@@ -287,36 +287,75 @@ export async function POST(req: NextRequest) {
   }
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({
-    model: "gemini-2.5-flash",
-    systemInstruction: buildSystemPrompt(),
-    generationConfig: {
-      temperature: 0.4,
-      maxOutputTokens: 1024,
-    },
-  });
+  const systemInstruction = buildSystemPrompt();
+  const generationConfig = { temperature: 0.4, maxOutputTokens: 1024 };
 
-  const chat = model.startChat({ history });
+  // 모델 폴백 체인 — 503/과부하/할당량 오류 시 자동으로 다음 모델 시도
+  const MODEL_CHAIN = [
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-flash-latest",
+    "gemini-2.0-flash-001",
+  ];
 
   const encoder = new TextEncoder();
   const readable = new ReadableStream({
     async start(controller) {
-      try {
-        const result = await chat.sendMessageStream(lastUserMsg);
-        for await (const chunk of result.stream) {
-          const text = chunk.text();
-          if (text) controller.enqueue(encoder.encode(text));
+      let lastError: unknown = null;
+
+      for (const modelName of MODEL_CHAIN) {
+        try {
+          const model = genAI.getGenerativeModel({
+            model: modelName,
+            systemInstruction,
+            generationConfig,
+          });
+          const chat = model.startChat({ history });
+          const result = await chat.sendMessageStream(lastUserMsg);
+
+          let emittedAnyText = false;
+          try {
+            for await (const chunk of result.stream) {
+              const text = chunk.text();
+              if (text) {
+                controller.enqueue(encoder.encode(text));
+                emittedAnyText = true;
+              }
+            }
+          } catch (streamErr) {
+            // 토큰을 일부 보낸 뒤 끊겼다면 더 이상 폴백 불가 — 안내 후 종료
+            if (emittedAnyText) {
+              const m = streamErr instanceof Error ? streamErr.message : "스트림 오류";
+              controller.enqueue(
+                encoder.encode(`\n\n[응답이 중간에 끊겼습니다: ${m}]\n다시 시도해 주세요.`),
+              );
+              controller.close();
+              return;
+            }
+            // 아직 한 글자도 못 받았으면 다음 모델로
+            lastError = streamErr;
+            continue;
+          }
+
+          // 정상 종료
+          controller.close();
+          return;
+        } catch (err) {
+          // 모델 생성/요청 시작 단계에서 실패 — 다음 모델로
+          lastError = err;
         }
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : "오류";
-        controller.enqueue(
-          encoder.encode(
-            `\n\n[오류가 발생했습니다: ${msg}]\n${fallbackPhone}로 전화 주세요.`,
-          ),
-        );
-      } finally {
-        controller.close();
       }
+
+      // 모든 모델 실패
+      const msg = lastError instanceof Error ? lastError.message : "오류";
+      controller.enqueue(
+        encoder.encode(
+          `[상담사가 잠시 자리를 비웠습니다 — Google Gemini 일시 과부하]\n` +
+            `잠시 후 다시 시도하시거나, ${fallbackPhone}으로 전화 주시면 즉시 상담 가능합니다.\n` +
+            `(원인: ${msg})`,
+        ),
+      );
+      controller.close();
     },
   });
 
