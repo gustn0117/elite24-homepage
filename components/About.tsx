@@ -27,12 +27,14 @@ export default function About() {
   const c = useSiteConfig();
   const COMPANY_INFO = [
     { label: "상호", value: c.companyName },
-    { label: "전문 분야", value: "기업이사 (사무실·공장·창고 이전)" },
+    ...(c.businessNumber ? [{ label: "사업자등록번호", value: c.businessNumber }] : []),
+    { label: "전문 분야", value: "기업이사 (사무실·공장·창고 이전), 중량물 운반" },
     { label: "주소", value: c.address },
     { label: c.phonePrimaryLabel, value: c.phonePrimary },
     ...(c.phoneSecondary
       ? [{ label: c.phoneSecondaryLabel || "보조 연락처", value: c.phoneSecondary }]
       : []),
+    ...(c.fax ? [{ label: "팩스", value: c.fax }] : []),
     { label: "이메일", value: c.email },
   ];
 

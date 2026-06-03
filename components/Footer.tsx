@@ -65,6 +65,12 @@ export default function Footer() {
                   <a href={phoneHref(c.phoneSecondary)} className="text-brand-navy font-bold hover:text-brand-orange">{c.phoneSecondary}</a>
                 </li>
               )}
+              {c.fax && (
+                <li className="flex justify-between border-b border-navy-100 pb-3">
+                  <span className="text-navy-500">팩스</span>
+                  <span className="text-brand-navy font-bold">{c.fax}</span>
+                </li>
+              )}
               <li className="flex justify-between border-b border-navy-100 pb-3">
                 <span className="text-navy-500">이메일</span>
                 <a href={emailHref(c.email)} className="text-brand-navy font-bold hover:text-brand-orange text-[13px]">{c.email}</a>
@@ -78,7 +84,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-navy-200 flex flex-col sm:flex-row justify-between gap-3 text-[12px] text-navy-500">
-          <span>© {new Date().getFullYear()} {c.companyName}. All rights reserved.</span>
+          <div className="space-y-1">
+            <div>© {new Date().getFullYear()} {c.companyName}. All rights reserved.</div>
+            {c.businessNumber && (
+              <div>사업자등록번호 {c.businessNumber}</div>
+            )}
+          </div>
           <span>기업이사 전문 · 정직한 견적 · 양심 작업</span>
         </div>
       </div>

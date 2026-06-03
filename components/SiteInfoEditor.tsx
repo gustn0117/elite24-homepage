@@ -11,11 +11,13 @@ const FIELDS: {
   group: "company" | "phone" | "contact";
 }[] = [
   { key: "companyName", label: "회사명", group: "company" },
-  { key: "representativeName", label: "대표자명", group: "company" },
+  { key: "representativeName", label: "대표자명", hint: "비워두면 사이트에 표시되지 않음", group: "company" },
+  { key: "businessNumber", label: "사업자등록번호", hint: "예: 644-88-03921", group: "company" },
   { key: "phonePrimaryLabel", label: "메인 전화 라벨", hint: "예: 사무실, 대표 등", group: "phone" },
   { key: "phonePrimary", label: "메인 전화번호", hint: "헤더 / CTA 버튼에 표시되는 번호", group: "phone" },
   { key: "phoneSecondaryLabel", label: "보조 전화 라벨", hint: "예: 대표, 휴대폰", group: "phone" },
   { key: "phoneSecondary", label: "보조 전화번호", group: "phone" },
+  { key: "fax", label: "팩스", hint: "예: 070-7507-7407 (비워두면 표시 안 함)", group: "phone" },
   { key: "email", label: "이메일", type: "email", group: "contact" },
   { key: "address", label: "주소", group: "contact" },
   { key: "businessHours", label: "상담 가능 시간", hint: "예: 평일·주말 24시간 상담", group: "contact" },

@@ -45,6 +45,7 @@ export default function Contact() {
     ...(c.phoneSecondary
       ? [{ label: c.phoneSecondaryLabel || "보조 연락처", value: c.phoneSecondary, href: phoneHref(c.phoneSecondary), Icon: PhoneIcon }]
       : []),
+    ...(c.fax ? [{ label: "팩스", value: c.fax, Icon: FaxIcon }] : []),
     { label: "이메일", value: c.email, href: emailHref(c.email), Icon: MailIcon },
     { label: "주소", value: c.address, Icon: MapIcon },
   ];
@@ -241,6 +242,15 @@ function MapIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
       <path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13zM12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function FaxIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <rect x="7" y="3" width="10" height="6" rx="1" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M5 9h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M8 14h8M8 17h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }

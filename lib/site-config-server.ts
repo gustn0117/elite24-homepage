@@ -39,8 +39,10 @@ function sanitize(raw: unknown): Partial<SiteConfig> {
     "phonePrimaryLabel",
     "phoneSecondary",
     "phoneSecondaryLabel",
+    "fax",
     "email",
     "address",
+    "businessNumber",
     "businessHours",
   ];
   const r = raw as Record<string, unknown>;

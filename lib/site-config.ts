@@ -8,8 +8,10 @@ export type SiteConfig = {
   phonePrimaryLabel: string;
   phoneSecondary: string;
   phoneSecondaryLabel: string;
+  fax: string;
   email: string;
   address: string;
+  businessNumber: string;
   businessHours: string;
 };
 
@@ -20,16 +22,20 @@ export const DEFAULT_SITE_CONFIG: SiteConfig = {
   phonePrimaryLabel: "사무실",
   phoneSecondary: "",
   phoneSecondaryLabel: "",
+  fax: "070-7507-7407",
   email: "elite_24@naver.com",
-  address: "서울 금천구 독산로 106길 15 1층",
+  address: "서울특별시 금천구 독산로106길 15, 102호 (독산동)",
+  businessNumber: "644-88-03921",
   businessHours: "평일·주말 24시간 상담",
 };
 
-// 비워둘 수 있는(선택) 필드 — 보조 연락처, 대표자명 등
+// 비워둘 수 있는(선택) 필드
 export const OPTIONAL_EMPTY_FIELDS: (keyof SiteConfig)[] = [
   "phoneSecondary",
   "phoneSecondaryLabel",
   "representativeName",
+  "fax",
+  "businessNumber",
 ];
 
 export function phoneHref(phone: string): string {
