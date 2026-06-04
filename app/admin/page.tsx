@@ -53,20 +53,19 @@ export default function AdminPage() {
   async function tryLogin(e: React.FormEvent) {
     e.preventDefault();
     setPwError("");
-    // 임의 GET으로 비밀번호 검증 — 잘못된 비밀번호로 업로드 시도해서 401 확인
-    const test = new FormData();
-    test.append("type", "images");
-    test.append("file", new Blob([""], { type: "image/png" }), "_probe.png");
-    const res = await fetch("/api/admin/upload", {
+    // 부작용 없는 전용 검증 엔드포인트 사용
+    const res = await fetch("/api/admin/verify", {
       method: "POST",
       headers: { Authorization: `Bearer ${pwInput}` },
-      body: test,
     });
     if (res.status === 401) {
       setPwError("비밀번호가 올바르지 않습니다.");
       return;
     }
-    // 200 이거나 400 (확장자 등) 이면 비밀번호는 맞음
+    if (!res.ok) {
+      setPwError("로그인 실패 — 잠시 후 다시 시도해 주세요.");
+      return;
+    }
     sessionStorage.setItem(KEY, pwInput);
     setPw(pwInput);
     setAuthed(true);

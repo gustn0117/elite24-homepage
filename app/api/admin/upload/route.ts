@@ -57,9 +57,18 @@ export async function POST(req: Request) {
     );
   }
 
+  // 0바이트 파일 차단
+  if (file.size === 0) {
+    return Response.json({ error: "빈 파일은 업로드할 수 없습니다." }, { status: 400 });
+  }
+
   await fs.mkdir(dirFor(type), { recursive: true });
 
-  const baseName = safeName(file.name);
+  let baseName = safeName(file.name);
+  // 시스템 파일 충돌 방지 — '_' 또는 '.' 시작 차단
+  if (/^[_.]/.test(baseName)) {
+    baseName = `f${baseName}`;
+  }
   let finalName = baseName;
   let counter = 1;
   while (true) {

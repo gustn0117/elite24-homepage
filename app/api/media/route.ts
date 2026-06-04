@@ -27,9 +27,12 @@ export async function GET(req: Request) {
     }
     const files = await Promise.all(
       entries.map(async (name) => {
+        // 시스템/숨김/0바이트 파일 제외 (`.`, `_` 접두사 + 빈 파일)
+        if (name.startsWith(".") || name.startsWith("_")) return null;
         try {
           const stat = await fs.stat(`${dir}/${name}`);
           if (!stat.isFile()) return null;
+          if (stat.size === 0) return null;
           return {
             name,
             size: stat.size,
