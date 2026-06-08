@@ -5,7 +5,7 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "이사절차",
   description:
-    "(주)엘리트24의 기업이사 4단계 절차. 상담부터 현장 조사, 견적 제안, 이사 진행까지 명확한 프로세스를 안내드립니다.",
+    "엘리트24 이사절차 — 상담 → 무료 현장조사 → 정확한 견적 → 이사 진행, 명확한 4단계.",
   alternates: { canonical: "/process" },
   openGraph: {
     url: "/process",

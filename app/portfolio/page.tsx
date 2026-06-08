@@ -5,7 +5,7 @@ import PortfolioGallery from "@/components/PortfolioGallery";
 export const metadata: Metadata = {
   title: "작업사례",
   description:
-    "(주)엘리트24의 사무실·공장·창고 이전 작업 사례를 사진과 영상으로 확인하세요.",
+    "엘리트24 작업사례 — 실제 진행한 사무실·공장·창고 이전 사진과 영상.",
   alternates: { canonical: "/portfolio" },
   openGraph: {
     url: "/portfolio",

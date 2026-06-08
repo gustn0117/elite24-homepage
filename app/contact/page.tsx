@@ -5,7 +5,7 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "문의하기",
   description:
-    "(주)엘리트24 견적·상담 문의. 전화·이메일·온라인 양식으로 빠르게 연락드립니다.",
+    "엘리트24 문의 — 무료 견적·상담. 사무실 02-6958-8067 또는 온라인 양식.",
   alternates: { canonical: "/contact" },
   openGraph: {
     url: "/contact",

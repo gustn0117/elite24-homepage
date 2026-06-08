@@ -5,7 +5,7 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "견적안내",
   description:
-    "(주)엘리트24의 기업이사 견적 안내. 1톤당 단가 기준의 두 가지 패키지와 추가 작업, 견적 관련 자주 묻는 질문을 확인하세요.",
+    "엘리트24 견적안내 — 1톤 30만원부터. 사전포장 / 풀패키지, 추가 작업 단가, 자주 묻는 질문.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     url: "/pricing",

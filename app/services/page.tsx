@@ -5,7 +5,7 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "서비스",
   description:
-    "사무실 이전, 공장·창고 이전, 법인·기관 이전 등 (주)엘리트24의 기업이사 전문 서비스를 안내드립니다.",
+    "엘리트24 서비스 — 사무실 이전, 공장·창고 이전, 법인·기관 이전 등 기업이사 전 영역.",
   alternates: { canonical: "/services" },
   openGraph: {
     url: "/services",

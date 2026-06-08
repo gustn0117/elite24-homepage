@@ -5,7 +5,7 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "회사소개",
   description:
-    "(주)엘리트24는 사무실·공장·창고 등 기업 이전을 전문으로 하는 이사짐센터입니다. 기업이사 전문성, 투명한 견적, 책임 있는 작업을 약속드립니다.",
+    "엘리트24 회사소개 — 기업이사 전문 이사짐센터. 정확한 일정, 투명한 견적, 책임 있는 작업.",
   alternates: { canonical: "/about" },
   openGraph: {
     url: "/about",

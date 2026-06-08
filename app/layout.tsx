@@ -9,8 +9,9 @@ import { getSiteConfig } from "@/lib/site-config-server";
 
 const SITE_URL = "https://elite24.co.kr";
 const SITE_NAME = "(주)엘리트24";
+// 네이버 권장 80자 이내, '엘리트24' 키워드 선두 배치
 const DESCRIPTION =
-  "(주)엘리트24는 사무실·공장·창고 등 기업 이전을 전문으로 하는 이사짐센터입니다. 합리적 가격, 명확한 견적, 책임감 있는 작업으로 기업 고객을 모십니다.";
+  "엘리트24 — 사무실·공장·창고 등 기업이사 전문 이사짐센터. 정직한 견적, 양심적인 작업, 약속한 가격 그대로.";
 const OG_IMAGE = `${SITE_URL}/img/building.jpg`;
 
 export const metadata: Metadata = {
@@ -24,13 +25,18 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   generator: "Next.js",
   keywords: [
+    // 브랜드 (최우선 — 검색엔진 가중치)
+    "엘리트24",
+    "(주)엘리트24",
+    "주식회사 엘리트24",
+    "ELITE24",
+    "elite24",
+    // 핵심 서비스
     "기업이사",
     "사무실이사",
     "공장이전",
     "창고이전",
     "이사짐센터",
-    "엘리트24",
-    "(주)엘리트24",
     "사무실이전",
     "법인이사",
     "기관이사",
@@ -39,6 +45,7 @@ export const metadata: Metadata = {
     "병원 이전",
     "관공서 이전",
     "기업이사 견적",
+    "중량물 운반",
     "서울 이사짐센터",
     "금천구 이사짐센터",
   ],
