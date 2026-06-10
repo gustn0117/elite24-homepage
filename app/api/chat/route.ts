@@ -17,13 +17,13 @@ function buildSystemPrompt() {
 
 ============================================================
 [회사 정보]
-- 상호: ${c.companyName}${c.businessNumber ? `\n- 사업자등록번호: ${c.businessNumber}` : ""}
+- 상호: ${c.companyName}${c.businessNumber ? `\n- 사업자등록번호: ${c.businessNumber}` : ""}${c.cargoLicense ? `\n- 화물운송허가번호: ${c.cargoLicense}` : ""}
 - 전문 분야: 기업이사 (사무실·공장·창고 이전), 중량물 운반 전문 법인 이사짐센터
 - 핵심 가치: 정직하고 투명한 가격, 양심적인 작업, 약속한 견적 그대로
 - 주소: ${c.address}
 ${phoneLine}
 - 이메일: ${c.email}
-- 상담 가능: ${c.businessHours}
+- 상담 가능: ${c.businessHours}${c.insurance ? `\n- 적재물 배상책임보험: ${c.insurance} 가입 — 운송 중 자산 손상 시 보상 보장` : ""}
 
 ============================================================
 [회사 소개 — 한 곳에 책임을 둡니다]

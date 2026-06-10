@@ -28,6 +28,7 @@ export default function About() {
   const COMPANY_INFO = [
     { label: "상호", value: c.companyName },
     ...(c.businessNumber ? [{ label: "사업자등록번호", value: c.businessNumber }] : []),
+    ...(c.cargoLicense ? [{ label: "화물운송허가번호", value: c.cargoLicense }] : []),
     { label: "전문 분야", value: "기업이사 (사무실·공장·창고 이전), 중량물 운반" },
     { label: "주소", value: c.address },
     { label: c.phonePrimaryLabel, value: c.phonePrimary },
@@ -36,6 +37,7 @@ export default function About() {
       : []),
     ...(c.fax ? [{ label: "팩스", value: c.fax }] : []),
     { label: "이메일", value: c.email },
+    ...(c.insurance ? [{ label: "적재물 배상책임보험", value: c.insurance }] : []),
   ];
 
   return (

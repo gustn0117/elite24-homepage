@@ -38,7 +38,7 @@ const STEPS = [
 
 const SAFETY = [
   { title: "안전 포장", desc: "전용 포장재·완충재로 자산 손상을 사전에 방지합니다.", icon: BoxIcon },
-  { title: "보험 가입", desc: "필요 시 작업 보험을 통해 추가 보호 장치를 마련합니다.", icon: ShieldIcon },
+  { title: "적재물 배상책임보험", desc: "메리츠화재 적재물 배상책임보험에 가입되어 운송 중 자산 손상 시 보상이 가능합니다.", icon: ShieldIcon },
   { title: "동선 점검", desc: "작업 전 진입로와 동선을 점검해 사고 가능성을 차단합니다.", icon: RouteIcon },
 ];
 

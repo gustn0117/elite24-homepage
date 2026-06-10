@@ -13,6 +13,8 @@ const FIELDS: {
   { key: "companyName", label: "회사명", group: "company" },
   { key: "representativeName", label: "대표자명", hint: "비워두면 사이트에 표시되지 않음", group: "company" },
   { key: "businessNumber", label: "사업자등록번호", hint: "예: 644-88-03921", group: "company" },
+  { key: "cargoLicense", label: "화물운송허가번호", hint: "예: 제198698호 (비워두면 표시 안 함)", group: "company" },
+  { key: "insurance", label: "적재물 배상책임보험사", hint: "예: 메리츠화재 (비워두면 표시 안 함)", group: "company" },
   { key: "phonePrimaryLabel", label: "메인 전화 라벨", hint: "예: 사무실, 대표 등", group: "phone" },
   { key: "phonePrimary", label: "메인 전화번호", hint: "헤더 / CTA 버튼에 표시되는 번호", group: "phone" },
   { key: "phoneSecondaryLabel", label: "보조 전화 라벨", hint: "예: 대표, 휴대폰", group: "phone" },

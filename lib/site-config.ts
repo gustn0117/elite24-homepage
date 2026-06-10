@@ -12,6 +12,8 @@ export type SiteConfig = {
   email: string;
   address: string;
   businessNumber: string;
+  cargoLicense: string; // 화물운송허가번호
+  insurance: string;    // 적재물 배상책임보험사
   businessHours: string;
 };
 
@@ -26,6 +28,8 @@ export const DEFAULT_SITE_CONFIG: SiteConfig = {
   email: "elite_24@naver.com",
   address: "서울특별시 금천구 독산로106길 15, 102호 (독산동)",
   businessNumber: "644-88-03921",
+  cargoLicense: "제198698호",
+  insurance: "메리츠화재",
   businessHours: "평일·주말 24시간 상담",
 };
 
@@ -36,6 +40,8 @@ export const OPTIONAL_EMPTY_FIELDS: (keyof SiteConfig)[] = [
   "representativeName",
   "fax",
   "businessNumber",
+  "cargoLicense",
+  "insurance",
 ];
 
 export function phoneHref(phone: string): string {

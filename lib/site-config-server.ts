@@ -43,6 +43,8 @@ function sanitize(raw: unknown): Partial<SiteConfig> {
     "email",
     "address",
     "businessNumber",
+    "cargoLicense",
+    "insurance",
     "businessHours",
   ];
   const r = raw as Record<string, unknown>;

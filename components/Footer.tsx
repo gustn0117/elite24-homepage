@@ -83,7 +83,23 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-navy-200 flex flex-col sm:flex-row justify-between gap-3 text-[12px] text-navy-500">
+        {/* 신뢰 지표 strip */}
+        {(c.cargoLicense || c.insurance) && (
+          <div className="mt-10 pt-5 border-t border-navy-200 flex flex-wrap gap-2 text-[11px]">
+            {c.cargoLicense && (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-navy-200 px-3 py-1.5 text-navy-700">
+                <ShieldIcon /> 화물운송허가 <strong className="text-brand-navy">{c.cargoLicense}</strong>
+              </span>
+            )}
+            {c.insurance && (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-navy-200 px-3 py-1.5 text-navy-700">
+                <CheckIcon /> 적재물 배상책임보험 <strong className="text-brand-navy">{c.insurance}</strong>
+              </span>
+            )}
+          </div>
+        )}
+
+        <div className="mt-8 pt-6 border-t border-navy-200 flex flex-col sm:flex-row justify-between gap-3 text-[12px] text-navy-500">
           <div className="space-y-1">
             <div>© {new Date().getFullYear()} {c.companyName}. All rights reserved.</div>
             {c.businessNumber && (
@@ -94,5 +110,21 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function ShieldIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="text-brand-orange shrink-0">
+      <path d="M12 3l8 3v6c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9V6l8-3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="text-brand-orange shrink-0">
+      <path d="M5 12.5L10 17.5L19 7.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
